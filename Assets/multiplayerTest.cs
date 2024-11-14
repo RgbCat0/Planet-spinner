@@ -4,13 +4,21 @@ using Unity.Multiplayer.Widgets;
 using Unity.Services.Authentication;
 using Unity.Services.Core;
 using UnityEngine;
+using TMPro;
 
 
 public class multiplayerTest : MonoBehaviour
 {
-    private async void Start()
+    private TMP_InputField m_InputField;
+
+    public async void Real()
     {
         await SetupAsync();
+    }
+    
+    private async void Start()
+    {
+        // await SetupAsync();
     }
     internal static async Task SetupAsync()
     {
