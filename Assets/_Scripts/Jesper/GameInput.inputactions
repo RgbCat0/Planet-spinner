@@ -1,0 +1,112 @@
+{
+    "name": "GameInput",
+    "maps": [
+        {
+            "name": "RotatePlanetPlayer",
+            "id": "773c897e-fc11-4b77-9885-af65ec80c2f8",
+            "actions": [
+                {
+                    "name": "RotatePlanet",
+                    "type": "Value",
+                    "id": "2a6096e8-129d-4c75-af12-15d9cf00714d",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "1D Axis",
+                    "id": "c765a62e-2854-439f-b613-fbd43b1a2e1c",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RotatePlanet",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "76880ae8-f792-496d-a972-090136b98787",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RotatePlanet",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "bbee1ff4-2f45-46b6-b15b-3a14f0dc9685",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RotatePlanet",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                }
+            ]
+        },
+        {
+            "name": "PlayerMovement",
+            "id": "d3494e24-74dd-420b-8d17-5639e7b8aa68",
+            "actions": [
+                {
+                    "name": "MoveLeftRight",
+                    "type": "Value",
+                    "id": "7e73e632-baa4-4ab5-b497-e09ee7e85ad3",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "2D Vector",
+                    "id": "0dbdaf5d-9aca-4a73-b56f-0f2067e50309",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveLeftRight",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "left",
+                    "id": "dd4f167b-bea1-4ab9-9a57-dc0a41107dbd",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveLeftRight",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "8657acd8-901f-448f-aaf6-ff3f1262c96f",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveLeftRight",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "Controls1",
+            "bindingGroup": "Controls1",
+            "devices": []
+        }
+    ]
+}
