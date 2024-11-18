@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 public class RotatePlanet : MonoBehaviour
 {
     private InputAction _rotateAction;
-    public float _rotateValue; // -1 to 1
+    private float _rotateValue; // -1 to 1
 
     [SerializeField]
     private float rotationSpeed;

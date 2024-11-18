@@ -21,10 +21,10 @@ public class multiplayerTest : MonoBehaviour
         await SetupAsync();
     }
 
-    private async void Start()
-    {
-        // await SetupAsync();
-    }
+    // private async void Start()
+    // {
+    //     // await SetupAsync();
+    // }
 
     internal static async Task SetupAsync()
     {
