@@ -1,32 +1,35 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+namespace Jesper
 {
-    #region Singleton pattern
-    // singleton pattern
-    public static GameManager Instance;
-
-    private void Awake()
+    public class GameManager : MonoBehaviour
     {
-        if (Instance == null)
+        #region Singleton pattern
+        // singleton pattern
+        public static GameManager Instance;
+
+        private void Awake()
         {
-            Instance = this;
-            DontDestroyOnLoad(this);
-            return;
+            if (Instance == null)
+            {
+                Instance = this;
+                DontDestroyOnLoad(this);
+                return;
+            }
+            Destroy(gameObject);
         }
-        Destroy(gameObject);
-    }
-    #endregion
-    public List<string> collectedItems = new();
+        #endregion
+        public List<string> collectedItems = new();
 
-    public void AddItem(string item)
-    {
-        collectedItems.Add(item);
-        UiManager.Instance.SetItemText(item);
-        if (collectedItems.Count == 1)
+        public void AddItem(string item)
         {
-            Debug.Log("Win");
+            collectedItems.Add(item);
+            UiManager.Instance.SetItemText(item);
+            if (collectedItems.Count == 1)
+            {
+                Debug.Log("Win");
+            }
         }
     }
 }

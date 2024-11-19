@@ -1,31 +1,34 @@
 using UnityEngine;
 
-public class InputEntry : MonoBehaviour
+namespace Jesper
 {
-    public static InputEntry Instance { get; private set; }
-    public GameInput GameInput { get; private set; }
-
-    private void Awake()
+    public class InputEntry : MonoBehaviour
     {
-        if (Instance != null)
+        public static InputEntry Instance { get; private set; }
+        public GameInput GameInput { get; private set; }
+
+        private void Awake()
         {
-            Destroy(gameObject);
-            return;
+            if (Instance != null)
+            {
+                Destroy(gameObject);
+                return;
+            }
+            Instance = this;
+            GameInput = new GameInput();
+            GameInput.Enable();
         }
-        Instance = this;
-        GameInput = new GameInput();
-        GameInput.Enable();
-    }
 
-    private void OnEnable()
-    {
-        GameInput?.Enable();
-        Debug.LogError("Input script enabled");
-    }
+        private void OnEnable()
+        {
+            GameInput?.Enable();
+            Debug.LogError("Input script enabled");
+        }
 
-    private void OnDisable()
-    {
-        GameInput?.Disable();
-        Debug.LogError("Input script disabled");
+        private void OnDisable()
+        {
+            GameInput?.Disable();
+            Debug.LogError("Input script disabled");
+        }
     }
 }

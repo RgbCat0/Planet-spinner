@@ -1,27 +1,30 @@
 using TMPro;
 using UnityEngine;
 
-public class UiManager : MonoBehaviour
+namespace Jesper
 {
-    #region Singleton pattern
-    public static UiManager Instance;
-
-    private void Awake()
+    public class UiManager : MonoBehaviour
     {
-        if (Instance == null)
+        #region Singleton pattern
+        public static UiManager Instance;
+
+        private void Awake()
         {
-            Instance = this;
-            // DontDestroyOnLoad(this); this script is only used in the main scene
-            return;
+            if (Instance == null)
+            {
+                Instance = this;
+                // DontDestroyOnLoad(this); this script is only used in the main scene
+                return;
+            }
+            Destroy(gameObject);
         }
-        Destroy(gameObject);
-    }
-    #endregion
-    [SerializeField]
-    private TextMeshProUGUI item;
+        #endregion
+        [SerializeField]
+        private TextMeshProUGUI item;
 
-    public void SetItemText(string text)
-    {
-        item.text = $"Supply item: {text}";
+        public void SetItemText(string text)
+        {
+            item.text = $"Supply item: {text}";
+        }
     }
 }

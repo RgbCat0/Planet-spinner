@@ -1,33 +1,34 @@
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+namespace Jesper
 {
-    public string item;
-
-    // ReSharper disable once ParameterHidesMember
-    private void AddItem(string item)
+    public class Player : MonoBehaviour
     {
-        this.item = item;
-        UiManager.Instance.SetItemText(item);
-    }
+        public string item;
 
-    public void OnCollisionEnter(Collision other)
-    {
-        if (other.gameObject.CompareTag("SupplyItem") && item == string.Empty)
+        // ReSharper disable once ParameterHidesMember
+        private void AddItem(string item)
         {
-            AddItem(other.gameObject.name);
-            Destroy(other.gameObject);
+            this.item = item;
+            UiManager.Instance.SetItemText(item);
         }
-        else if (other.gameObject.CompareTag("Finish") && item != string.Empty)
+
+        public void OnCollisionEnter(Collision other)
         {
-            GameManager.Instance.AddItem(item);
-            item = string.Empty;
-        }
-        else
-        {
-            Debug.Log($"Player collided with {other.gameObject.name}");
+            if (other.gameObject.CompareTag("SupplyItem") && item == string.Empty)
+            {
+                AddItem(other.gameObject.name);
+                Destroy(other.gameObject);
+            }
+            else if (other.gameObject.CompareTag("Finish") && item != string.Empty)
+            {
+                GameManager.Instance.AddItem(item);
+                item = string.Empty;
+            }
+            else
+            {
+                Debug.Log($"Player collided with {other.gameObject.name}");
+            }
         }
     }
 }
