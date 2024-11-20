@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
 
-namespace Jesper
+namespace Jesper.InGame
 {
     public class PlayerMovement : MonoBehaviour
     {

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Jesper
+namespace Jesper.InGame
 {
     public class InputEntry : MonoBehaviour
     {

@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace Jesper
+namespace Jesper.InGame
 {
     public class UiManager : MonoBehaviour
     {

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Jesper
+namespace Jesper.InGame
 {
     public class GameManager : MonoBehaviour
     {

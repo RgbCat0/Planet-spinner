@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Jesper
+namespace Jesper.InGame
 {
     public class CameraZoom : MonoBehaviour
     {
@@ -20,7 +20,6 @@ namespace Jesper
         [SerializeField]
         private float zoomSpeed = 1f;
 
-        [SerializeField]
         private bool _isZoomedIn;
 
         private void Start()

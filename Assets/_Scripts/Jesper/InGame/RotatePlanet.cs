@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Jesper
+namespace Jesper.InGame
 {
     public class RotatePlanet : MonoBehaviour // note to self: if it ain't broke, don't fix it
     {
