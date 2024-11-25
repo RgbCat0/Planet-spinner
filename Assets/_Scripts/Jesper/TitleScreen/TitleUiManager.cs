@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Jesper.TitleScreen
 {
@@ -25,7 +26,7 @@ namespace Jesper.TitleScreen
         [SerializeField]
         private float animationDuration = 1f;
 
-        private const string TitleScreenName = "Title Title";
+        private const string TitleScreenName = "Rotational race";
         private const string SettingsScreenName = "Settings Title"; // no settings rn
         private const string CreditsScreenName =
             "Developers: Jesper, Thomas\nArtists: Lucas Bl, Lucas Bo, Jiray";
@@ -34,7 +35,6 @@ namespace Jesper.TitleScreen
         private void Start()
         {
             mainText.text = TitleScreenName;
-            StartCoroutine(ExitGame());
         }
 
         private void Update()
@@ -74,6 +74,10 @@ namespace Jesper.TitleScreen
             }
             yield return null;
         }
+
+        public void OnPlayButtonClicked() => SceneManager.LoadScene("Main");
+
+        public void OnExitButtonClicked() => StartCoroutine(ExitGame());
 
         private IEnumerator ExitGame()
         {

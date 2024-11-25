@@ -6,6 +6,7 @@ namespace Jesper.InGame
 {
     public class CameraZoom : MonoBehaviour
     {
+        public bool isPlayer2;
         private InputAction _zoomAction;
 
         [SerializeField]
@@ -24,7 +25,10 @@ namespace Jesper.InGame
 
         private void Start()
         {
-            _zoomAction = InputEntry.Instance.GameInput.Camera.Zoom;
+            if (!isPlayer2)
+                _zoomAction = InputEntry.Instance.GameInput.Camera.Zoom;
+            else
+                _zoomAction = InputEntry.Instance.GameInput.Camera.ZoomPlayer2;
             _zoomAction.Enable();
             _zoomAction.performed += _ => ToggleZoom();
         }
@@ -48,8 +52,8 @@ namespace Jesper.InGame
         {
             while (Vector3.Distance(transform.position, zoomOutPosition) > 0.1f && !_isZoomedIn)
             {
-                transform.position = Vector3.Lerp(
-                    transform.position,
+                transform.localPosition = Vector3.Lerp(
+                    transform.localPosition,
                     zoomOutPosition,
                     zoomSpeed * Time.deltaTime
                 );
@@ -61,9 +65,9 @@ namespace Jesper.InGame
         {
             while (_isZoomedIn)
             {
-                transform.position = Vector3.Lerp(
-                    transform.position,
-                    target.position + zoomInDistance,
+                transform.localPosition = Vector3.Lerp(
+                    transform.localPosition,
+                    target.localPosition + zoomInDistance,
                     zoomSpeed * Time.deltaTime
                 );
                 yield return null;

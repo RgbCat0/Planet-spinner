@@ -6,6 +6,7 @@ namespace Jesper.InGame
 {
     public class PlayerMovement : MonoBehaviour
     {
+        public bool isPlayer2;
         private Rigidbody _rb;
         private InputAction _moveAction;
         private InputAction _jumpAction;
@@ -39,8 +40,16 @@ namespace Jesper.InGame
         {
             _rb = GetComponent<Rigidbody>();
             _rb.sleepThreshold = 0;
-            _moveAction = InputEntry.Instance.GameInput.PlayerMovement.MoveLeftRight;
-            _jumpAction = InputEntry.Instance.GameInput.PlayerMovement.Jump;
+            if (!isPlayer2)
+            {
+                _moveAction = InputEntry.Instance.GameInput.PlayerMovement.MoveLeftRight;
+                _jumpAction = InputEntry.Instance.GameInput.PlayerMovement.Jump;
+            }
+            else
+            {
+                _moveAction = InputEntry.Instance.GameInput.PlayerMovement.MoveLeftRightPlayer2;
+                _jumpAction = InputEntry.Instance.GameInput.PlayerMovement.JumpPlayer2;
+            }
             _moveAction.Enable();
             _jumpAction.Enable();
             _moveAction.performed += ctx => _moveValue = ctx.ReadValue<Vector2>();
