@@ -2,6 +2,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace Jesper.TitleScreen
 {
@@ -18,7 +19,13 @@ namespace Jesper.TitleScreen
         private UiState _currentState = UiState.TitleScreen;
 
         [SerializeField]
-        private TextMeshProUGUI mainText;
+        private TextMeshProUGUI mainText,
+            subText,
+            playerText;
+
+        [SerializeField]
+        private Button playButton,
+            exitButton;
 
         [SerializeField]
         private AnimationCurve textMovementCurve;
@@ -35,25 +42,6 @@ namespace Jesper.TitleScreen
         private void Start()
         {
             mainText.text = TitleScreenName;
-        }
-
-        private void Update()
-        {
-            switch (_currentState)
-            {
-                case UiState.TitleScreen:
-                    // Handle title screen UI
-                    break;
-                case UiState.SettingsScreen:
-                    // Handle settings screen UI
-                    break;
-                case UiState.CreditsScreen:
-                    // Handle credits screen UI
-                    break;
-                case UiState.Exiting:
-                    // Handle exiting UI
-                    break;
-            }
         }
 
         private IEnumerator MoveMainTextToCenter()
@@ -75,7 +63,12 @@ namespace Jesper.TitleScreen
             yield return null;
         }
 
-        public void OnPlayButtonClicked() => SceneManager.LoadScene("Main");
+        public async void OnPlayButtonClicked()
+        {
+            await SceneManager.LoadSceneAsync("Main");
+
+            GameManager.Instance.DistributePlayers();
+        }
 
         public void OnExitButtonClicked() => StartCoroutine(ExitGame());
 
@@ -91,5 +84,9 @@ namespace Jesper.TitleScreen
 #endif
             yield return null;
         }
+
+        public void SetPlayerText(int playerCount) => playerText.text = $"Players: {playerCount}";
+
+        public void EnablePlayButton() => playButton.interactable = true;
     }
 }

@@ -25,10 +25,10 @@ namespace Jesper.InGame
 
         private void Start()
         {
-            if (!isPlayer2)
-                _zoomAction = InputEntry.Instance.GameInput.Camera.Zoom;
-            else
-                _zoomAction = InputEntry.Instance.GameInput.Camera.ZoomPlayer2;
+            // if (!isPlayer2)
+            // _zoomAction = InputEntry.Instance.GameInput.Camera.Zoom;
+            // else
+            // _zoomAction = InputEntry.Instance.GameInput.Camera.ZoomPlayer2;
             _zoomAction.Enable();
             _zoomAction.performed += _ => ToggleZoom();
         }

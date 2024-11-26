@@ -6,8 +6,9 @@ namespace Jesper.InGame
 {
     public class PlayerMovement : MonoBehaviour
     {
-        public bool isPlayer2;
+        public bool Bound { get; private set; }
         private Rigidbody _rb;
+        private PlayerInput _playerInput;
         private InputAction _moveAction;
         private InputAction _jumpAction;
         private Vector2 _moveValue;
@@ -40,21 +41,6 @@ namespace Jesper.InGame
         {
             _rb = GetComponent<Rigidbody>();
             _rb.sleepThreshold = 0;
-            if (!isPlayer2)
-            {
-                _moveAction = InputEntry.Instance.GameInput.PlayerMovement.MoveLeftRight;
-                _jumpAction = InputEntry.Instance.GameInput.PlayerMovement.Jump;
-            }
-            else
-            {
-                _moveAction = InputEntry.Instance.GameInput.PlayerMovement.MoveLeftRightPlayer2;
-                _jumpAction = InputEntry.Instance.GameInput.PlayerMovement.JumpPlayer2;
-            }
-            _moveAction.Enable();
-            _jumpAction.Enable();
-            _moveAction.performed += ctx => _moveValue = ctx.ReadValue<Vector2>();
-            _moveAction.canceled += _ => _moveValue = Vector2.zero;
-            _jumpAction.performed += _ => Jump();
         }
 
         private void Update()
@@ -84,5 +70,18 @@ namespace Jesper.InGame
 
         private bool IsGrounded(float distance) =>
             Physics.Raycast(transform.position, Vector3.down, distance);
+
+        public void BindPlayerInput(PlayerInput playerInput)
+        {
+            _playerInput = playerInput;
+            _moveAction = _playerInput.actions.FindAction("MoveLeftRight");
+            _jumpAction = _playerInput.actions.FindAction("Jump");
+            _moveAction.Enable();
+            _jumpAction.Enable();
+            _moveAction.performed += ctx => _moveValue = ctx.ReadValue<Vector2>();
+            _moveAction.canceled += _ => _moveValue = Vector2.zero;
+            _jumpAction.performed += _ => Jump();
+            Bound = true;
+        }
     }
 }

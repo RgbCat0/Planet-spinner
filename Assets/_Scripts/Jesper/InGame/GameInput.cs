@@ -24,32 +24,68 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
     ""name"": ""GameInput"",
     ""maps"": [
         {
-            ""name"": ""RotatePlanet"",
-            ""id"": ""773c897e-fc11-4b77-9885-af65ec80c2f8"",
+            ""name"": ""Player"",
+            ""id"": ""0859a179-8ae3-4f19-a97b-b5718b81c01e"",
             ""actions"": [
+                {
+                    ""name"": ""MoveLeftRight"",
+                    ""type"": ""Value"",
+                    ""id"": ""7ca594fc-636c-4ef1-9edb-663405adc81f"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
                 {
                     ""name"": ""Rotate"",
                     ""type"": ""Value"",
-                    ""id"": ""2a6096e8-129d-4c75-af12-15d9cf00714d"",
+                    ""id"": ""5e4b499f-cc1d-4bb3-9a9b-1915d7806c0a"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""RotatePlayer2"",
-                    ""type"": ""Value"",
-                    ""id"": ""2c03dbbd-d25b-440c-85f2-368dd21e2a00"",
+                    ""name"": ""Jump"",
+                    ""type"": ""Button"",
+                    ""id"": ""b0e21731-f93e-4728-807a-104ff932baf4"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Zoom"",
+                    ""type"": ""Button"",
+                    ""id"": ""7bfe763f-2347-4f54-a0c9-f126f4218384"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""UiNav"",
+                    ""type"": ""Value"",
+                    ""id"": ""b1da3460-5f1b-4ac1-94ad-b3334d29b1e1"",
+                    ""expectedControlType"": ""Dpad"",
+                    ""processors"": """",
+                    ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""UiNavUse"",
+                    ""type"": ""Button"",
+                    ""id"": ""810ec4fd-2a60-4c68-a2a1-2916ca7b6bc4"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
                 {
                     ""name"": ""1D Axis"",
-                    ""id"": ""c765a62e-2854-439f-b613-fbd43b1a2e1c"",
+                    ""id"": ""6338861d-2c00-4e16-9619-313611d3a2c4"",
                     ""path"": ""1DAxis"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -60,7 +96,29 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""negative"",
-                    ""id"": ""76880ae8-f792-496d-a972-090136b98787"",
+                    ""id"": ""6030a3ec-f99d-48cb-aa0e-23c9f48dff4b"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Controller1"",
+                    ""action"": ""Rotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""6b1fad03-aba3-41d4-9016-5ca3ab603d6e"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Controller1"",
+                    ""action"": ""Rotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""a7f49eac-6ca7-4169-8892-913f929f0715"",
                     ""path"": ""<Gamepad>/leftStick/left"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -71,7 +129,29 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""positive"",
-                    ""id"": ""bbee1ff4-2f45-46b6-b15b-3a14f0dc9685"",
+                    ""id"": ""0a496f01-ed2a-4665-a6da-ae03e9c4b8a3"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Controller1"",
+                    ""action"": ""Rotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""e1c18785-5809-4496-aaab-2fc50945e1aa"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Controller1"",
+                    ""action"": ""Rotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""4d252864-4ffa-46d4-8467-11ba21ca6c59"",
                     ""path"": ""<Gamepad>/leftStick/right"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -79,120 +159,10 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
                     ""action"": ""Rotate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
-                }
-            ]
-        },
-        {
-            ""name"": ""PlayerMovement"",
-            ""id"": ""d3494e24-74dd-420b-8d17-5639e7b8aa68"",
-            ""actions"": [
-                {
-                    ""name"": ""MoveLeftRight"",
-                    ""type"": ""Value"",
-                    ""id"": ""7e73e632-baa4-4ab5-b497-e09ee7e85ad3"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""Jump"",
-                    ""type"": ""Button"",
-                    ""id"": ""e33debfd-6788-44f7-981b-dff0999f0bb8"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""MoveLeftRightPlayer2"",
-                    ""type"": ""Value"",
-                    ""id"": ""301323eb-7984-48d7-a45d-7a9022452a1f"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""JumpPlayer2"",
-                    ""type"": ""Button"",
-                    ""id"": ""f86a0e97-7299-443a-8d81-f63fba3e043c"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                }
-            ],
-            ""bindings"": [
-                {
-                    ""name"": ""2D Vector"",
-                    ""id"": ""0dbdaf5d-9aca-4a73-b56f-0f2067e50309"",
-                    ""path"": ""2DVector"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""MoveLeftRight"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""dd4f167b-bea1-4ab9-9a57-dc0a41107dbd"",
-                    ""path"": ""<Gamepad>/leftStick/left"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Controller2"",
-                    ""action"": ""MoveLeftRight"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""8657acd8-901f-448f-aaf6-ff3f1262c96f"",
-                    ""path"": ""<Gamepad>/leftStick/right"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Controller2"",
-                    ""action"": ""MoveLeftRight"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""2D Vector"",
-                    ""id"": ""ae47590d-a744-4d68-8406-9cb72a375cfe"",
-                    ""path"": ""2DVector"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""MoveLeftRightPlayer2"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""9a4f25ac-b108-4db7-9754-a248be442ccb"",
-                    ""path"": ""<Keyboard>/j"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""MoveLeftRightPlayer2"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""c3e52ac0-a06d-4124-94fe-de5ba61cf5a5"",
-                    ""path"": ""<Keyboard>/l"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""MoveLeftRightPlayer2"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
                 },
                 {
                     ""name"": """",
-                    ""id"": ""22a2919f-f70d-40ac-85b0-664c1dfbe732"",
+                    ""id"": ""059d4ef7-b8d1-40f9-b94a-f17a3b52ff6b"",
                     ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -203,44 +173,7 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""b4a85dab-ce50-430c-bffc-5a8760540eca"",
-                    ""path"": ""<Keyboard>/i"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""JumpPlayer2"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                }
-            ]
-        },
-        {
-            ""name"": ""Camera"",
-            ""id"": ""6d6e4692-c55b-41a2-b83d-1b32628f5ab0"",
-            ""actions"": [
-                {
-                    ""name"": ""Zoom"",
-                    ""type"": ""Button"",
-                    ""id"": ""fca68d28-d868-40e2-a000-7d6e10b228ad"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""ZoomPlayer2"",
-                    ""type"": ""Button"",
-                    ""id"": ""07bf6b4c-3b9d-48ac-81df-b35040e04d0e"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                }
-            ],
-            ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""eaf6958e-bb82-4a2d-a4cd-9dc6b8084cbf"",
+                    ""id"": ""26bdf8cb-1da9-47f0-8341-d4ded128ba1b"",
                     ""path"": ""<Gamepad>/rightStickPress"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -250,13 +183,178 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": """",
-                    ""id"": ""9fbc2d2b-5d0c-48f0-8794-088e9016fcdc"",
-                    ""path"": ""<Keyboard>/x"",
+                    ""name"": ""2D Vector"",
+                    ""id"": ""a5faaa4c-14c2-4ce5-b9c5-b2e453fa595f"",
+                    ""path"": ""2DVector"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ZoomPlayer2"",
+                    ""action"": ""MoveLeftRight"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""7e8c7349-fce7-443f-8e93-b793c345c161"",
+                    ""path"": ""<Gamepad>/leftStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Controller2"",
+                    ""action"": ""MoveLeftRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""2390922f-62a4-48ee-9e84-39b474c6a705"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Controller2"",
+                    ""action"": ""MoveLeftRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""c8651452-2f67-4355-b29f-420f6979864b"",
+                    ""path"": ""<Gamepad>/leftStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Controller2"",
+                    ""action"": ""MoveLeftRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""f14180ba-3d43-403a-ba71-4885f1323e49"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Controller2"",
+                    ""action"": ""MoveLeftRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""a79314f0-52cb-4964-b8db-42ee10149251"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UiNav"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""a7cfad41-988e-4946-b656-6fa5d6252a0e"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Controller1;Controller2"",
+                    ""action"": ""UiNav"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""a9747fbb-00da-4fdc-a34d-d4426273ff23"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Controller1;Controller2"",
+                    ""action"": ""UiNav"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""6c234b08-2a5a-4a32-89a3-a212ce30d67c"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Controller1;Controller2"",
+                    ""action"": ""UiNav"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""b5fb4df6-dc6d-42bc-89a1-628bffd1a955"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Controller1;Controller2"",
+                    ""action"": ""UiNav"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""8895c177-9d0a-41da-bcca-fe8ba1491d42"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UiNav"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""f9d3721b-02b3-4825-820b-a5e4bc73b555"",
+                    ""path"": ""<Gamepad>/leftStick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UiNav"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""c3603231-d49b-4a35-9418-b1a696a70ba7"",
+                    ""path"": ""<Gamepad>/leftStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UiNav"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""ea34ad48-b3ef-4df4-8240-fe901513be1e"",
+                    ""path"": ""<Gamepad>/leftStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UiNav"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""5745c009-e6bd-4021-ba5e-e758817c97b3"",
+                    ""path"": ""<Gamepad>/leftStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UiNav"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""83504f04-d722-47f0-ac12-0f99334ab678"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UiNavUse"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -288,27 +386,19 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         }
     ]
 }");
-        // RotatePlanet
-        m_RotatePlanet = asset.FindActionMap("RotatePlanet", throwIfNotFound: true);
-        m_RotatePlanet_Rotate = m_RotatePlanet.FindAction("Rotate", throwIfNotFound: true);
-        m_RotatePlanet_RotatePlayer2 = m_RotatePlanet.FindAction("RotatePlayer2", throwIfNotFound: true);
-        // PlayerMovement
-        m_PlayerMovement = asset.FindActionMap("PlayerMovement", throwIfNotFound: true);
-        m_PlayerMovement_MoveLeftRight = m_PlayerMovement.FindAction("MoveLeftRight", throwIfNotFound: true);
-        m_PlayerMovement_Jump = m_PlayerMovement.FindAction("Jump", throwIfNotFound: true);
-        m_PlayerMovement_MoveLeftRightPlayer2 = m_PlayerMovement.FindAction("MoveLeftRightPlayer2", throwIfNotFound: true);
-        m_PlayerMovement_JumpPlayer2 = m_PlayerMovement.FindAction("JumpPlayer2", throwIfNotFound: true);
-        // Camera
-        m_Camera = asset.FindActionMap("Camera", throwIfNotFound: true);
-        m_Camera_Zoom = m_Camera.FindAction("Zoom", throwIfNotFound: true);
-        m_Camera_ZoomPlayer2 = m_Camera.FindAction("ZoomPlayer2", throwIfNotFound: true);
+        // Player
+        m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
+        m_Player_MoveLeftRight = m_Player.FindAction("MoveLeftRight", throwIfNotFound: true);
+        m_Player_Rotate = m_Player.FindAction("Rotate", throwIfNotFound: true);
+        m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
+        m_Player_Zoom = m_Player.FindAction("Zoom", throwIfNotFound: true);
+        m_Player_UiNav = m_Player.FindAction("UiNav", throwIfNotFound: true);
+        m_Player_UiNavUse = m_Player.FindAction("UiNavUse", throwIfNotFound: true);
     }
 
     ~@GameInput()
     {
-        UnityEngine.Debug.Assert(!m_RotatePlanet.enabled, "This will cause a leak and performance issues, GameInput.RotatePlanet.Disable() has not been called.");
-        UnityEngine.Debug.Assert(!m_PlayerMovement.enabled, "This will cause a leak and performance issues, GameInput.PlayerMovement.Disable() has not been called.");
-        UnityEngine.Debug.Assert(!m_Camera.enabled, "This will cause a leak and performance issues, GameInput.Camera.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Player.enabled, "This will cause a leak and performance issues, GameInput.Player.Disable() has not been called.");
     }
 
     public void Dispose()
@@ -367,183 +457,91 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // RotatePlanet
-    private readonly InputActionMap m_RotatePlanet;
-    private List<IRotatePlanetActions> m_RotatePlanetActionsCallbackInterfaces = new List<IRotatePlanetActions>();
-    private readonly InputAction m_RotatePlanet_Rotate;
-    private readonly InputAction m_RotatePlanet_RotatePlayer2;
-    public struct RotatePlanetActions
+    // Player
+    private readonly InputActionMap m_Player;
+    private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
+    private readonly InputAction m_Player_MoveLeftRight;
+    private readonly InputAction m_Player_Rotate;
+    private readonly InputAction m_Player_Jump;
+    private readonly InputAction m_Player_Zoom;
+    private readonly InputAction m_Player_UiNav;
+    private readonly InputAction m_Player_UiNavUse;
+    public struct PlayerActions
     {
         private @GameInput m_Wrapper;
-        public RotatePlanetActions(@GameInput wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Rotate => m_Wrapper.m_RotatePlanet_Rotate;
-        public InputAction @RotatePlayer2 => m_Wrapper.m_RotatePlanet_RotatePlayer2;
-        public InputActionMap Get() { return m_Wrapper.m_RotatePlanet; }
+        public PlayerActions(@GameInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @MoveLeftRight => m_Wrapper.m_Player_MoveLeftRight;
+        public InputAction @Rotate => m_Wrapper.m_Player_Rotate;
+        public InputAction @Jump => m_Wrapper.m_Player_Jump;
+        public InputAction @Zoom => m_Wrapper.m_Player_Zoom;
+        public InputAction @UiNav => m_Wrapper.m_Player_UiNav;
+        public InputAction @UiNavUse => m_Wrapper.m_Player_UiNavUse;
+        public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(RotatePlanetActions set) { return set.Get(); }
-        public void AddCallbacks(IRotatePlanetActions instance)
+        public static implicit operator InputActionMap(PlayerActions set) { return set.Get(); }
+        public void AddCallbacks(IPlayerActions instance)
         {
-            if (instance == null || m_Wrapper.m_RotatePlanetActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_RotatePlanetActionsCallbackInterfaces.Add(instance);
-            @Rotate.started += instance.OnRotate;
-            @Rotate.performed += instance.OnRotate;
-            @Rotate.canceled += instance.OnRotate;
-            @RotatePlayer2.started += instance.OnRotatePlayer2;
-            @RotatePlayer2.performed += instance.OnRotatePlayer2;
-            @RotatePlayer2.canceled += instance.OnRotatePlayer2;
-        }
-
-        private void UnregisterCallbacks(IRotatePlanetActions instance)
-        {
-            @Rotate.started -= instance.OnRotate;
-            @Rotate.performed -= instance.OnRotate;
-            @Rotate.canceled -= instance.OnRotate;
-            @RotatePlayer2.started -= instance.OnRotatePlayer2;
-            @RotatePlayer2.performed -= instance.OnRotatePlayer2;
-            @RotatePlayer2.canceled -= instance.OnRotatePlayer2;
-        }
-
-        public void RemoveCallbacks(IRotatePlanetActions instance)
-        {
-            if (m_Wrapper.m_RotatePlanetActionsCallbackInterfaces.Remove(instance))
-                UnregisterCallbacks(instance);
-        }
-
-        public void SetCallbacks(IRotatePlanetActions instance)
-        {
-            foreach (var item in m_Wrapper.m_RotatePlanetActionsCallbackInterfaces)
-                UnregisterCallbacks(item);
-            m_Wrapper.m_RotatePlanetActionsCallbackInterfaces.Clear();
-            AddCallbacks(instance);
-        }
-    }
-    public RotatePlanetActions @RotatePlanet => new RotatePlanetActions(this);
-
-    // PlayerMovement
-    private readonly InputActionMap m_PlayerMovement;
-    private List<IPlayerMovementActions> m_PlayerMovementActionsCallbackInterfaces = new List<IPlayerMovementActions>();
-    private readonly InputAction m_PlayerMovement_MoveLeftRight;
-    private readonly InputAction m_PlayerMovement_Jump;
-    private readonly InputAction m_PlayerMovement_MoveLeftRightPlayer2;
-    private readonly InputAction m_PlayerMovement_JumpPlayer2;
-    public struct PlayerMovementActions
-    {
-        private @GameInput m_Wrapper;
-        public PlayerMovementActions(@GameInput wrapper) { m_Wrapper = wrapper; }
-        public InputAction @MoveLeftRight => m_Wrapper.m_PlayerMovement_MoveLeftRight;
-        public InputAction @Jump => m_Wrapper.m_PlayerMovement_Jump;
-        public InputAction @MoveLeftRightPlayer2 => m_Wrapper.m_PlayerMovement_MoveLeftRightPlayer2;
-        public InputAction @JumpPlayer2 => m_Wrapper.m_PlayerMovement_JumpPlayer2;
-        public InputActionMap Get() { return m_Wrapper.m_PlayerMovement; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(PlayerMovementActions set) { return set.Get(); }
-        public void AddCallbacks(IPlayerMovementActions instance)
-        {
-            if (instance == null || m_Wrapper.m_PlayerMovementActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_PlayerMovementActionsCallbackInterfaces.Add(instance);
+            if (instance == null || m_Wrapper.m_PlayerActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_PlayerActionsCallbackInterfaces.Add(instance);
             @MoveLeftRight.started += instance.OnMoveLeftRight;
             @MoveLeftRight.performed += instance.OnMoveLeftRight;
             @MoveLeftRight.canceled += instance.OnMoveLeftRight;
+            @Rotate.started += instance.OnRotate;
+            @Rotate.performed += instance.OnRotate;
+            @Rotate.canceled += instance.OnRotate;
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
-            @MoveLeftRightPlayer2.started += instance.OnMoveLeftRightPlayer2;
-            @MoveLeftRightPlayer2.performed += instance.OnMoveLeftRightPlayer2;
-            @MoveLeftRightPlayer2.canceled += instance.OnMoveLeftRightPlayer2;
-            @JumpPlayer2.started += instance.OnJumpPlayer2;
-            @JumpPlayer2.performed += instance.OnJumpPlayer2;
-            @JumpPlayer2.canceled += instance.OnJumpPlayer2;
+            @Zoom.started += instance.OnZoom;
+            @Zoom.performed += instance.OnZoom;
+            @Zoom.canceled += instance.OnZoom;
+            @UiNav.started += instance.OnUiNav;
+            @UiNav.performed += instance.OnUiNav;
+            @UiNav.canceled += instance.OnUiNav;
+            @UiNavUse.started += instance.OnUiNavUse;
+            @UiNavUse.performed += instance.OnUiNavUse;
+            @UiNavUse.canceled += instance.OnUiNavUse;
         }
 
-        private void UnregisterCallbacks(IPlayerMovementActions instance)
+        private void UnregisterCallbacks(IPlayerActions instance)
         {
             @MoveLeftRight.started -= instance.OnMoveLeftRight;
             @MoveLeftRight.performed -= instance.OnMoveLeftRight;
             @MoveLeftRight.canceled -= instance.OnMoveLeftRight;
+            @Rotate.started -= instance.OnRotate;
+            @Rotate.performed -= instance.OnRotate;
+            @Rotate.canceled -= instance.OnRotate;
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
-            @MoveLeftRightPlayer2.started -= instance.OnMoveLeftRightPlayer2;
-            @MoveLeftRightPlayer2.performed -= instance.OnMoveLeftRightPlayer2;
-            @MoveLeftRightPlayer2.canceled -= instance.OnMoveLeftRightPlayer2;
-            @JumpPlayer2.started -= instance.OnJumpPlayer2;
-            @JumpPlayer2.performed -= instance.OnJumpPlayer2;
-            @JumpPlayer2.canceled -= instance.OnJumpPlayer2;
-        }
-
-        public void RemoveCallbacks(IPlayerMovementActions instance)
-        {
-            if (m_Wrapper.m_PlayerMovementActionsCallbackInterfaces.Remove(instance))
-                UnregisterCallbacks(instance);
-        }
-
-        public void SetCallbacks(IPlayerMovementActions instance)
-        {
-            foreach (var item in m_Wrapper.m_PlayerMovementActionsCallbackInterfaces)
-                UnregisterCallbacks(item);
-            m_Wrapper.m_PlayerMovementActionsCallbackInterfaces.Clear();
-            AddCallbacks(instance);
-        }
-    }
-    public PlayerMovementActions @PlayerMovement => new PlayerMovementActions(this);
-
-    // Camera
-    private readonly InputActionMap m_Camera;
-    private List<ICameraActions> m_CameraActionsCallbackInterfaces = new List<ICameraActions>();
-    private readonly InputAction m_Camera_Zoom;
-    private readonly InputAction m_Camera_ZoomPlayer2;
-    public struct CameraActions
-    {
-        private @GameInput m_Wrapper;
-        public CameraActions(@GameInput wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Zoom => m_Wrapper.m_Camera_Zoom;
-        public InputAction @ZoomPlayer2 => m_Wrapper.m_Camera_ZoomPlayer2;
-        public InputActionMap Get() { return m_Wrapper.m_Camera; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(CameraActions set) { return set.Get(); }
-        public void AddCallbacks(ICameraActions instance)
-        {
-            if (instance == null || m_Wrapper.m_CameraActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_CameraActionsCallbackInterfaces.Add(instance);
-            @Zoom.started += instance.OnZoom;
-            @Zoom.performed += instance.OnZoom;
-            @Zoom.canceled += instance.OnZoom;
-            @ZoomPlayer2.started += instance.OnZoomPlayer2;
-            @ZoomPlayer2.performed += instance.OnZoomPlayer2;
-            @ZoomPlayer2.canceled += instance.OnZoomPlayer2;
-        }
-
-        private void UnregisterCallbacks(ICameraActions instance)
-        {
             @Zoom.started -= instance.OnZoom;
             @Zoom.performed -= instance.OnZoom;
             @Zoom.canceled -= instance.OnZoom;
-            @ZoomPlayer2.started -= instance.OnZoomPlayer2;
-            @ZoomPlayer2.performed -= instance.OnZoomPlayer2;
-            @ZoomPlayer2.canceled -= instance.OnZoomPlayer2;
+            @UiNav.started -= instance.OnUiNav;
+            @UiNav.performed -= instance.OnUiNav;
+            @UiNav.canceled -= instance.OnUiNav;
+            @UiNavUse.started -= instance.OnUiNavUse;
+            @UiNavUse.performed -= instance.OnUiNavUse;
+            @UiNavUse.canceled -= instance.OnUiNavUse;
         }
 
-        public void RemoveCallbacks(ICameraActions instance)
+        public void RemoveCallbacks(IPlayerActions instance)
         {
-            if (m_Wrapper.m_CameraActionsCallbackInterfaces.Remove(instance))
+            if (m_Wrapper.m_PlayerActionsCallbackInterfaces.Remove(instance))
                 UnregisterCallbacks(instance);
         }
 
-        public void SetCallbacks(ICameraActions instance)
+        public void SetCallbacks(IPlayerActions instance)
         {
-            foreach (var item in m_Wrapper.m_CameraActionsCallbackInterfaces)
+            foreach (var item in m_Wrapper.m_PlayerActionsCallbackInterfaces)
                 UnregisterCallbacks(item);
-            m_Wrapper.m_CameraActionsCallbackInterfaces.Clear();
+            m_Wrapper.m_PlayerActionsCallbackInterfaces.Clear();
             AddCallbacks(instance);
         }
     }
-    public CameraActions @Camera => new CameraActions(this);
+    public PlayerActions @Player => new PlayerActions(this);
     private int m_Controller1SchemeIndex = -1;
     public InputControlScheme Controller1Scheme
     {
@@ -562,21 +560,13 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
             return asset.controlSchemes[m_Controller2SchemeIndex];
         }
     }
-    public interface IRotatePlanetActions
-    {
-        void OnRotate(InputAction.CallbackContext context);
-        void OnRotatePlayer2(InputAction.CallbackContext context);
-    }
-    public interface IPlayerMovementActions
+    public interface IPlayerActions
     {
         void OnMoveLeftRight(InputAction.CallbackContext context);
+        void OnRotate(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
-        void OnMoveLeftRightPlayer2(InputAction.CallbackContext context);
-        void OnJumpPlayer2(InputAction.CallbackContext context);
-    }
-    public interface ICameraActions
-    {
         void OnZoom(InputAction.CallbackContext context);
-        void OnZoomPlayer2(InputAction.CallbackContext context);
+        void OnUiNav(InputAction.CallbackContext context);
+        void OnUiNavUse(InputAction.CallbackContext context);
     }
 }
