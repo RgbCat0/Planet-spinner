@@ -80,6 +80,15 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""815938db-4b27-4090-973c-5e50043a57a0"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -357,6 +366,17 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
                     ""action"": ""UiNavUse"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bca8e19d-ef07-405b-8bb3-06681b201375"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -394,6 +414,7 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         m_Player_Zoom = m_Player.FindAction("Zoom", throwIfNotFound: true);
         m_Player_UiNav = m_Player.FindAction("UiNav", throwIfNotFound: true);
         m_Player_UiNavUse = m_Player.FindAction("UiNavUse", throwIfNotFound: true);
+        m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
     }
 
     ~@GameInput()
@@ -466,6 +487,7 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Zoom;
     private readonly InputAction m_Player_UiNav;
     private readonly InputAction m_Player_UiNavUse;
+    private readonly InputAction m_Player_Pause;
     public struct PlayerActions
     {
         private @GameInput m_Wrapper;
@@ -476,6 +498,7 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         public InputAction @Zoom => m_Wrapper.m_Player_Zoom;
         public InputAction @UiNav => m_Wrapper.m_Player_UiNav;
         public InputAction @UiNavUse => m_Wrapper.m_Player_UiNavUse;
+        public InputAction @Pause => m_Wrapper.m_Player_Pause;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -503,6 +526,9 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
             @UiNavUse.started += instance.OnUiNavUse;
             @UiNavUse.performed += instance.OnUiNavUse;
             @UiNavUse.canceled += instance.OnUiNavUse;
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -525,6 +551,9 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
             @UiNavUse.started -= instance.OnUiNavUse;
             @UiNavUse.performed -= instance.OnUiNavUse;
             @UiNavUse.canceled -= instance.OnUiNavUse;
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -568,5 +597,6 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         void OnZoom(InputAction.CallbackContext context);
         void OnUiNav(InputAction.CallbackContext context);
         void OnUiNavUse(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
 }

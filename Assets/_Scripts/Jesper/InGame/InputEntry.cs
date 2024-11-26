@@ -17,18 +17,19 @@ namespace Jesper.InGame
             Instance = this;
             GameInput = new GameInput();
             GameInput.Enable();
+            DontDestroyOnLoad(this); // keyboard testing in a controller game
         }
 
         private void OnEnable()
         {
             GameInput?.Enable();
-            Debug.LogError("Input script enabled");
+            Debug.Log("Testing input script enabled");
         }
 
         private void OnDisable()
         {
             GameInput?.Disable();
-            Debug.LogError("Input script disabled");
+            Debug.Log("Testing input script disabled");
         }
     }
 }
