@@ -14,6 +14,7 @@ namespace Jesper
 
         private void Awake()
         {
+            Application.targetFrameRate = 120;
             if (Instance == null)
             {
                 Instance = this;
@@ -25,7 +26,7 @@ namespace Jesper
         #endregion
         #region Player input handler
         public List<PlayerInput> playerInputs = new(); // game can only continue if there are 4 players
-        private const int NeededPlayers = 2;
+        private const int NeededPlayers = 4;
 
         public void AddPlayerInput(PlayerInput playerInput)
         {
@@ -35,6 +36,13 @@ namespace Jesper
             if (playerInputs.Count == 2)
             {
                 playerInputs[1]
+                    .GetComponent<PlayerInputHandler>()
+                    .SwitchControlScheme("Controller1");
+            }
+
+            if (playerInputs.Count == 4)
+            {
+                playerInputs[3] // player 4
                     .GetComponent<PlayerInputHandler>()
                     .SwitchControlScheme("Controller1");
             }
@@ -49,13 +57,8 @@ namespace Jesper
 
         public void DistributePlayers()
         {
-            // foreach (var playerInput in playerInputs)
-            // {
-            // playerInput.GetComponent<PlayerInputHandler>().BindToInGame(false);
-            // }
-            //test
-            playerInputs[0].GetComponent<PlayerInputHandler>().BindToInGame(false);
-            playerInputs[1].GetComponent<PlayerInputHandler>().BindToInGame(true);
+            for (int i = 0; i < playerInputs.Count; i++)
+                playerInputs[i].GetComponent<PlayerInputHandler>().BindToInGame(i % 2 == 1);
         }
 
         public List<string> collectedItems = new();
