@@ -3,6 +3,7 @@ using Jesper.InGame;
 using Jesper.TitleScreen;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 namespace Jesper
 {
@@ -52,12 +53,19 @@ namespace Jesper
             }
         }
         #endregion
-        #region In game
-        // a
 
-        public void DistributePlayers()
+        #region In game
+
+        public async void StartGame()
         {
-            for (int i = 0; i < playerInputs.Count; i++)
+            await SceneManager.LoadSceneAsync("Main");
+
+            DistributePlayers();
+        }
+
+        private void DistributePlayers()
+        {
+            for (var i = 0; i < playerInputs.Count; i++)
                 playerInputs[i].GetComponent<PlayerInputHandler>().BindToInGame(i % 2 == 1);
         }
 

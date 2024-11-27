@@ -1,7 +1,6 @@
 using Jesper.InGame;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.UI;
 
 namespace Jesper
 {
@@ -16,7 +15,6 @@ namespace Jesper
         private void Start()
         {
             _playerInput = GetComponent<PlayerInput>();
-
             _playerInput.defaultControlScheme = "Controller2";
             _playerInput.SwitchCurrentControlScheme(
                 _playerInput.defaultControlScheme,
@@ -29,10 +27,8 @@ namespace Jesper
             GameManager.Instance.AddPlayerInput(_playerInput); // register player input
         }
 
-        public void SwitchControlScheme(string controlScheme)
-        {
+        public void SwitchControlScheme(string controlScheme) =>
             _playerInput.SwitchCurrentControlScheme(controlScheme, _playerInput.devices[0]);
-        }
 
         public void BindToInGame(bool rotatingPlayer)
         {
@@ -45,12 +41,11 @@ namespace Jesper
         private void JoinNormalPlayer()
         {
             var temp = FindObjectsByType<PlayerMovement>(FindObjectsSortMode.InstanceID);
-            foreach (var playerMovement in temp)
+            foreach (var movement in temp)
             {
-                if (playerMovement.Bound) // ass testing
+                if (!movement.Bound)
                     continue;
-
-                playerMovement.BindPlayerInput(_playerInput);
+                movement.BindPlayerInput(_playerInput);
                 break;
             }
         }
@@ -62,7 +57,6 @@ namespace Jesper
             {
                 if (rotatePlanet.Bound)
                     continue;
-
                 rotatePlanet.BindPlayerInput(_playerInput);
                 break;
             }

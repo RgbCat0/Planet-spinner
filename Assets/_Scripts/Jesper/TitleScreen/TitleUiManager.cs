@@ -1,22 +1,15 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Jesper.TitleScreen
 {
     public class TitleUiManager : MonoBehaviour
     {
-        private enum UiState
-        {
-            TitleScreen,
-            SettingsScreen,
-            CreditsScreen,
-            Exiting
-        }
-
-        private UiState _currentState = UiState.TitleScreen;
+        [SerializeField]
+        private GameObject mainPanel,
+            teamSelectPanel;
 
         [SerializeField]
         private TextMeshProUGUI mainText,
@@ -63,19 +56,13 @@ namespace Jesper.TitleScreen
             yield return null;
         }
 
-        public async void OnPlayButtonClicked()
-        {
-            await SceneManager.LoadSceneAsync("Main");
-
-            GameManager.Instance.DistributePlayers();
-        }
+        public void OnPlayButtonClicked() => GameManager.Instance.StartGame();
 
         public void OnExitButtonClicked() => StartCoroutine(ExitGame());
 
         private IEnumerator ExitGame()
         {
             mainText.text = ExitingScreenName;
-            _currentState = UiState.Exiting;
             StartCoroutine(MoveMainTextToCenter());
             yield return new WaitForSeconds(animationDuration);
             Application.Quit();
@@ -88,5 +75,11 @@ namespace Jesper.TitleScreen
         public void SetPlayerText(int playerCount) => playerText.text = $"Players: {playerCount}";
 
         public void EnablePlayButton() => playButton.interactable = true;
+
+        public void SwitchToTeamSelect()
+        {
+            mainPanel.SetActive(false);
+            teamSelectPanel.SetActive(true);
+        }
     }
 }

@@ -6,7 +6,6 @@ namespace Jesper.InGame
 {
     public class CameraZoom : MonoBehaviour
     {
-        public bool isPlayer2;
         private InputAction _zoomAction;
 
         [SerializeField]
@@ -23,17 +22,7 @@ namespace Jesper.InGame
 
         private bool _isZoomedIn;
 
-        private void Start()
-        {
-            // if (!isPlayer2)
-            // _zoomAction = InputEntry.Instance.GameInput.Camera.Zoom;
-            // else
-            // _zoomAction = InputEntry.Instance.GameInput.Camera.ZoomPlayer2;
-            _zoomAction.Enable();
-            _zoomAction.performed += _ => ToggleZoom();
-        }
-
-        private void ToggleZoom()
+        public void ToggleZoom()
         {
             Debug.Log("Toggle zoom");
             if (_isZoomedIn)

@@ -8,10 +8,7 @@ namespace Jesper.InGame
     {
         public bool Bound { get; private set; }
         private Rigidbody _rb;
-        private PlayerInput _playerInput;
-        private InputAction _moveAction;
-        private InputAction _jumpAction;
-        private Vector2 _moveValue;
+        private Vector2 _move;
         private bool _isGroundFriction,
             _isGroundJump;
 
@@ -37,6 +34,9 @@ namespace Jesper.InGame
         [SerializeField, Tooltip("How much the player slows down when grounded")]
         private float friction;
 
+        [SerializeField]
+        private GameObject teamCamera;
+
         private void Start()
         {
             _rb = GetComponent<Rigidbody>();
@@ -52,14 +52,11 @@ namespace Jesper.InGame
 
         private void Move()
         {
-            _rb.AddForce(
-                new Vector3(_moveValue.x, 0, _moveValue.y) * (speed * Time.deltaTime),
-                ForceMode.VelocityChange
-            );
+            _rb.AddForce(_move * (speed * Time.deltaTime), ForceMode.VelocityChange);
             if (_rb.linearVelocity.magnitude > maxSpeed)
-                _rb.linearVelocity = _rb.linearVelocity.normalized * maxSpeed;
+                _rb.linearVelocity = _rb.linearVelocity.normalized * maxSpeed; // cap speed
             if (_rb.linearVelocity.magnitude > 0 && _isGroundFriction)
-                _rb.AddForce(-_rb.linearVelocity.normalized * friction);
+                _rb.AddForce(-_rb.linearVelocity.normalized * friction); // apply ground friction
         }
 
         private void Jump()
@@ -73,14 +70,13 @@ namespace Jesper.InGame
 
         public void BindPlayerInput(PlayerInput playerInput)
         {
-            _playerInput = playerInput;
-            _moveAction = _playerInput.actions.FindAction("MoveLeftRight");
-            _jumpAction = _playerInput.actions.FindAction("Jump");
-            _moveAction.Enable();
-            _jumpAction.Enable();
-            _moveAction.performed += ctx => _moveValue = ctx.ReadValue<Vector2>();
-            _moveAction.canceled += _ => _moveValue = Vector2.zero;
-            _jumpAction.performed += _ => Jump();
+            var moveAction = playerInput.actions.FindAction("MoveLeftRight");
+            var jumpAction = playerInput.actions.FindAction("Jump");
+            moveAction.performed += ctx => _move = ctx.ReadValue<Vector2>();
+            moveAction.canceled += _ => _move = Vector2.zero;
+            jumpAction.performed += _ => Jump();
+            var temp = playerInput.actions["Zoom"];
+            temp.performed += _ => teamCamera.GetComponent<CameraZoom>().ToggleZoom();
             Bound = true;
         }
     }
