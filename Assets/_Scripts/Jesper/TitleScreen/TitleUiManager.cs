@@ -56,7 +56,7 @@ namespace Jesper.TitleScreen
             yield return null;
         }
 
-        public void OnPlayButtonClicked() => GameManager.Instance.StartGame();
+        public void OnPlayButtonClicked() => GameManager.Instance.GotoTeamSelect();
 
         public void OnExitButtonClicked() => StartCoroutine(ExitGame());
 

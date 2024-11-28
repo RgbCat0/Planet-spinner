@@ -30,6 +30,11 @@ namespace Jesper
         public void SwitchControlScheme(string controlScheme) =>
             _playerInput.SwitchCurrentControlScheme(controlScheme, _playerInput.devices[0]);
 
+        public void BindToTeamSelect(GameObject gameObjectToBind)
+        {
+            // aaaaaa
+        }
+
         public void BindToInGame(bool rotatingPlayer)
         {
             if (!rotatingPlayer)

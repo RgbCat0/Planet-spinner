@@ -28,12 +28,21 @@ namespace Jesper
         #region Player input handler
         public List<PlayerInput> playerInputs = new(); // game can only continue if there are 4 players
         private const int NeededPlayers = 4;
+        private TitleUiManager _titleUiManager;
+        private TeamSelectHandler _teamSelectHandler;
+
+        private void Start()
+        {
+            _titleUiManager = FindFirstObjectByType<TitleUiManager>()
+                .GetComponent<TitleUiManager>();
+            _teamSelectHandler = FindFirstObjectByType<TeamSelectHandler>()
+                .GetComponent<TeamSelectHandler>();
+        }
 
         public void AddPlayerInput(PlayerInput playerInput)
         {
             playerInputs.Add(playerInput);
-            var temp = FindFirstObjectByType<TitleUiManager>().GetComponent<TitleUiManager>();
-            temp.SetPlayerText(playerInputs.Count);
+            _titleUiManager.SetPlayerText(playerInputs.Count);
             if (playerInputs.Count == 2)
             {
                 playerInputs[1]
@@ -49,17 +58,25 @@ namespace Jesper
             }
             if (playerInputs.Count == NeededPlayers)
             {
-                temp.EnablePlayButton();
+                _titleUiManager.EnablePlayButton();
             }
         }
         #endregion
 
         #region In game
 
+        public void GotoTeamSelect()
+        {
+            _titleUiManager.SwitchToTeamSelect();
+
+            _teamSelectHandler.Bind();
+            _teamSelectHandler.checkPosition = true;
+        }
+
         public async void StartGame()
         {
             await SceneManager.LoadSceneAsync("Main");
-
+            _teamSelectHandler.checkPosition = false;
             DistributePlayers();
         }
 

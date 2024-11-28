@@ -1,16 +1,94 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
-public class TeamSelectHandler : MonoBehaviour
+namespace Jesper.TitleScreen
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public class TeamSelectHandler : MonoBehaviour
     {
-        
-    }
+        public List<RectTransform> playerObjects; // used for team selection movement
+        public bool checkPosition;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        [SerializeField]
+        private List<Vector2> rotateBox1;
+
+        [SerializeField]
+        private List<Vector2> rotateBox2;
+
+        [SerializeField]
+        private List<Vector2> playerBox1;
+
+        [SerializeField]
+        private List<Vector2> playerBox2;
+
+        [SerializeField]
+        private List<string> playerOrder = new(4); // if player0 is in playerBox2, playerOrder[0] = "playerBox2"
+
+        public void Bind()
+        {
+            for (var i = 0; i < GameManager.Instance.playerInputs.Count; i++)
+            {
+                playerObjects[i]
+                    .GetComponent<TitlePlayerMovement>()
+                    .Bind(GameManager.Instance.playerInputs[i]);
+            }
+        }
+
+        private void Update()
+        {
+            if (!checkPosition)
+                return;
+            for (var i = 0; i < playerObjects.Count; i++)
+            {
+                if (IsInsideBox(playerObjects[i].anchoredPosition, rotateBox1))
+                {
+                    if (NotSameBox("rotateBox1"))
+                        playerOrder[i] = "rotateBox1";
+                }
+                else if (IsInsideBox(playerObjects[i].anchoredPosition, rotateBox2))
+                {
+                    if (NotSameBox("rotateBox2"))
+                        playerOrder[i] = "rotateBox2";
+                }
+                else if (IsInsideBox(playerObjects[i].anchoredPosition, playerBox1))
+                {
+                    if (NotSameBox("playerBox1"))
+                        playerOrder[i] = "playerBox1";
+                }
+                else if (IsInsideBox(playerObjects[i].anchoredPosition, playerBox2))
+                {
+                    if (NotSameBox("playerBox2"))
+                        playerOrder[i] = "playerBox2";
+                }
+                else
+                    playerOrder[i] = "";
+            }
+
+            if (playerOrder.All(x => x != ""))
+            {
+                checkPosition = false;
+                GameManager.Instance.StartGame();
+            }
+        }
+
+        private bool IsInsideBox(Vector2 position, List<Vector2> box)
+        {
+            if (box.Count < 2)
+                return false;
+
+            Vector2 bottomLeft = box[0];
+            Vector2 topRight = box[1];
+
+            return position.x >= bottomLeft.x
+                && position.x <= topRight.x
+                && position.y >= bottomLeft.y
+                && position.y <= topRight.y;
+        }
+
+        private bool NotSameBox(string boxName)
+        {
+            return playerOrder.All(x => x != boxName);
+        }
     }
 }
