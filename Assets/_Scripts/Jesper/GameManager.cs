@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using Jesper.InGame;
 using Jesper.TitleScreen;
@@ -27,7 +28,7 @@ namespace Jesper
         #endregion
         #region Player input handler
         public List<PlayerInput> playerInputs = new(); // game can only continue if there are 4 players
-        private const int NeededPlayers = 4;
+        public const int NeededPlayers = 4;
         private TitleUiManager _titleUiManager;
         private TeamSelectHandler _teamSelectHandler;
 
@@ -84,17 +85,47 @@ namespace Jesper
         {
             for (var i = 0; i < playerInputs.Count; i++)
                 playerInputs[i].GetComponent<PlayerInputHandler>().BindToInGame(playerOrder[i]);
+            StartCoroutine(StartGameCountdown());
+        }
+
+        private IEnumerator StartGameCountdown()
+        {
+            var temp = FindObjectsByType<RotatePlanet>(FindObjectsSortMode.InstanceID);
+            var temp2 = FindObjectsByType<PlayerMovement>(FindObjectsSortMode.InstanceID);
+            foreach (var t in temp)
+                t.movementEnabled = false;
+            foreach (var t in temp2)
+                t.movementEnabled = false;
+            yield return new WaitForSeconds(1);
+            UiManager.Instance.UpdateCountDown("2");
+            yield return new WaitForSeconds(1);
+            UiManager.Instance.UpdateCountDown("1");
+            yield return new WaitForSeconds(1);
+            UiManager.Instance.UpdateCountDown("GO!");
+            yield return new WaitForSeconds(0.5f);
+            UiManager.Instance.GameStart();
+            foreach (var t in temp)
+                t.movementEnabled = true;
+            foreach (var t in temp2)
+                t.movementEnabled = true;
         }
 
         public List<string> collectedItems = new();
+        public List<string> collectedItems2 = new();
 
-        public void AddItem(string item)
+        public void AddItem(string item, int teamNumber)
         {
-            collectedItems.Add(item);
-            UiManager.Instance.SetItemText(item);
-            if (collectedItems.Count == 1)
+            if (teamNumber == 0)
             {
-                Debug.Log("Win");
+                collectedItems.Add(item);
+                if (collectedItems.Count == 3)
+                    Debug.Log("team 1 wins");
+            }
+            else
+            {
+                collectedItems2.Add(item);
+                if (collectedItems2.Count == 3)
+                    Debug.Log("team 2 wins");
             }
         }
         #endregion

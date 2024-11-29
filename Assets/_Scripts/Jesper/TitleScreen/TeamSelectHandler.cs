@@ -64,8 +64,8 @@ namespace Jesper.TitleScreen
                 else
                     playerOrder[i] = "";
             }
-
-            if (playerOrder.Any(x => x == ""))
+            // checks if all (gamemanager.neededplayers) players have selected a team (players can be less then 4 for testing)
+            if (playerOrder.Count(x => x != "") < GameManager.NeededPlayers)
                 return;
             checkPosition = false;
             GameManager.Instance.StartGame(playerOrder);

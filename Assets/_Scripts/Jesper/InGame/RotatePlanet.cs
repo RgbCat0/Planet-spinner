@@ -6,6 +6,7 @@ namespace Jesper.InGame
     public class RotatePlanet : MonoBehaviour // note to self: if it ain't broke, don't fix it
     {
         public bool Bound { get; private set; }
+        public bool movementEnabled;
         private float _rotateValue; // -1 to 1
 
         [SerializeField]
@@ -14,8 +15,13 @@ namespace Jesper.InGame
         [SerializeField]
         private GameObject teamCamera;
 
-        private void Update() =>
-            transform.Rotate(transform.forward * (_rotateValue * rotationSpeed * Time.deltaTime));
+        private void Update()
+        {
+            if (movementEnabled)
+                transform.Rotate(
+                    transform.forward * (_rotateValue * rotationSpeed * Time.deltaTime)
+                );
+        }
 
         public void BindPlayerInput(PlayerInput playerInput)
         {

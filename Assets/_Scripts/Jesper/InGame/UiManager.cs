@@ -20,11 +20,33 @@ namespace Jesper.InGame
         }
         #endregion
         [SerializeField]
-        private TextMeshProUGUI item;
+        private TextMeshProUGUI item,
+            item2;
 
-        public void SetItemText(string text)
+        [SerializeField]
+        private TextMeshProUGUI countdown,
+            countdown2;
+
+        [SerializeField]
+        private GameObject countDownParent;
+
+        public void SetItemText(string text, int team)
         {
-            item.text = $"Supply item: {text}";
+            if (team == 0)
+                item.text = $"Supply item: {text}";
+            else
+                item2.text = $"Supply item: {text}";
+        }
+
+        public void UpdateCountDown(string text)
+        {
+            countdown.text = text;
+            countdown2.text = text;
+        }
+
+        public void GameStart()
+        {
+            countDownParent.SetActive(false);
         }
     }
 }

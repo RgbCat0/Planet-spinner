@@ -11,6 +11,7 @@ namespace Jesper.InGame
         private Vector2 _move;
         private bool _isGroundFriction,
             _isGroundJump;
+        public bool movementEnabled;
 
         [SerializeField]
         private float speed;
@@ -47,7 +48,8 @@ namespace Jesper.InGame
         {
             _isGroundFriction = IsGrounded(frictionCheckDistance);
             _isGroundJump = IsGrounded(jumpCheckDistance);
-            Move();
+            if (movementEnabled)
+                Move();
         }
 
         private void Move()
