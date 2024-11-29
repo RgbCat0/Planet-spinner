@@ -7,6 +7,8 @@ using System;
 public class Teamscore : MonoBehaviour
 {
     public TextMeshProUGUI ScoreText;
+    public TextMeshProUGUI whoWonText;
+
     public int scoreTeam1;
     public int scoreTeam2;
     public static string saveScore;
@@ -21,11 +23,18 @@ public class Teamscore : MonoBehaviour
         if (EndScene)
         {
             ScoreText.text = saveScore;
-        }else
-        ScoreText.text = string.Format("       {0}    {1}", scoreTeam1, scoreTeam2);
+            if(whoWon == 1)
+            {
+                whoWonText.text = "Red Won";
+            }else
+                whoWonText.text = "Blue Won";
+
+        }
+        else
+        ScoreText.text = string.Format("       {0}  -   {1}", scoreTeam1, scoreTeam2);
 
 
-        if (scoreTeam1 >= 3 && EndScene)
+        if (scoreTeam1 >= 3 && !EndScene)
         {
             whoWon = 1;
             saveScore = ScoreText.text;
