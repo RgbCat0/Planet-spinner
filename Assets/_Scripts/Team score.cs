@@ -1,0 +1,54 @@
+using Unity.VisualScripting;
+using UnityEngine;
+using TMPro;
+using UnityEngine.SceneManagement;
+using System;
+
+public class Teamscore : MonoBehaviour
+{
+    public TextMeshProUGUI ScoreText;
+    public int scoreTeam1;
+    public int scoreTeam2;
+    public static string saveScore;
+    public static int whoWon;
+    public static bool EndScene = false;
+    void Start()
+    {
+        
+    }
+    private void Update()
+    {
+        if (EndScene)
+        {
+            ScoreText.text = saveScore;
+        }else
+        ScoreText.text = string.Format("       {0}    {1}", scoreTeam1, scoreTeam2);
+
+
+        if (scoreTeam1 >= 3 && EndScene)
+        {
+            whoWon = 1;
+            saveScore = ScoreText.text;
+            EndScene = true;
+            SceneManager.LoadScene(2);
+        }
+        if (scoreTeam2 >= 3 && !EndScene)
+        {
+            whoWon = 2;
+            saveScore = ScoreText.text;
+            EndScene = true;
+            SceneManager.LoadScene(2);
+        }
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.CompareTag("FinishTRed")){
+            scoreTeam1++;
+        }
+        if(collision.collider.CompareTag("finish")) {
+          scoreTeam2++;
+        }
+    }
+
+    
+}

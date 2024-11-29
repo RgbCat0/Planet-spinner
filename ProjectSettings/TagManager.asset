@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - SupplyItem
+  - FinishTRed
   layers:
   - Default
   - TransparentFX
