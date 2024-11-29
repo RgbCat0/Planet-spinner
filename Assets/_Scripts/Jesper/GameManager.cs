@@ -73,17 +73,17 @@ namespace Jesper
             _teamSelectHandler.checkPosition = true;
         }
 
-        public async void StartGame()
+        public async void StartGame(List<string> playerOrder)
         {
             await SceneManager.LoadSceneAsync("Main");
             _teamSelectHandler.checkPosition = false;
-            DistributePlayers();
+            DistributePlayers(playerOrder);
         }
 
-        private void DistributePlayers()
+        private void DistributePlayers(List<string> playerOrder)
         {
             for (var i = 0; i < playerInputs.Count; i++)
-                playerInputs[i].GetComponent<PlayerInputHandler>().BindToInGame(i % 2 == 1);
+                playerInputs[i].GetComponent<PlayerInputHandler>().BindToInGame(playerOrder[i]);
         }
 
         public List<string> collectedItems = new();

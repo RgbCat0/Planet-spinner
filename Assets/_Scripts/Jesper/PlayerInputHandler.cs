@@ -35,34 +35,45 @@ namespace Jesper
             // aaaaaa
         }
 
-        public void BindToInGame(bool rotatingPlayer)
+        public void BindToInGame(string playerType)
         {
-            if (!rotatingPlayer)
-                JoinNormalPlayer();
-            else
-                JoinRotatingPlayer();
+            switch (playerType)
+            {
+                case "player1"
+                or "player2":
+                    JoinNormalPlayer(playerType);
+                    break;
+                case "rotate1"
+                or "rotate2":
+                    JoinRotatingPlayer(playerType);
+                    break;
+            }
         }
 
-        private void JoinNormalPlayer()
+        private void JoinNormalPlayer(string playerType)
         {
+            SwitchControlScheme("Controller2");
             var temp = FindObjectsByType<PlayerMovement>(FindObjectsSortMode.InstanceID);
             foreach (var movement in temp)
             {
-                if (!movement.Bound)
+                if (movement.gameObject.name.Contains(playerType))
+                    movement.BindPlayerInput(_playerInput);
+                else
                     continue;
-                movement.BindPlayerInput(_playerInput);
                 break;
             }
         }
 
-        private void JoinRotatingPlayer()
+        private void JoinRotatingPlayer(string playerType)
         {
+            SwitchControlScheme("Controller1");
             var temp = FindObjectsByType<RotatePlanet>(FindObjectsSortMode.InstanceID);
             foreach (var rotatePlanet in temp)
             {
-                if (rotatePlanet.Bound)
+                if (rotatePlanet.gameObject.name.Contains(playerType))
+                    rotatePlanet.BindPlayerInput(_playerInput);
+                else
                     continue;
-                rotatePlanet.BindPlayerInput(_playerInput);
                 break;
             }
         }

@@ -796,7 +796,7 @@ GameObject:
   - component: {fileID: 695920129}
   - component: {fileID: 695920128}
   m_Layer: 0
-  m_Name: Player2
+  m_Name: player2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1343,7 +1343,7 @@ GameObject:
   - component: {fileID: 1028350308}
   - component: {fileID: 1028350312}
   m_Layer: 0
-  m_Name: Player0
+  m_Name: player1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1509,7 +1509,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 60854146165395824, guid: d5039b23495748e4f8a9e3daae620b90, type: 3}
       propertyPath: m_Name
-      value: player3
+      value: rotate2
       objectReference: {fileID: 0}
     - target: {fileID: 834259028694272970, guid: d5039b23495748e4f8a9e3daae620b90, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1985,7 +1985,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 60854146165395824, guid: d5039b23495748e4f8a9e3daae620b90, type: 3}
       propertyPath: m_Name
-      value: Player1
+      value: rotate1
       objectReference: {fileID: 0}
     - target: {fileID: 834259028694272970, guid: d5039b23495748e4f8a9e3daae620b90, type: 3}
       propertyPath: m_LocalPosition.x

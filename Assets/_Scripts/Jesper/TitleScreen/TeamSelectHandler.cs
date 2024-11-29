@@ -43,33 +43,32 @@ namespace Jesper.TitleScreen
             {
                 if (IsInsideBox(playerObjects[i].anchoredPosition, rotateBox1))
                 {
-                    if (NotSameBox("rotateBox1"))
-                        playerOrder[i] = "rotateBox1";
+                    if (NotSameBox("rotate1"))
+                        playerOrder[i] = "rotate1";
                 }
                 else if (IsInsideBox(playerObjects[i].anchoredPosition, rotateBox2))
                 {
-                    if (NotSameBox("rotateBox2"))
-                        playerOrder[i] = "rotateBox2";
+                    if (NotSameBox("rotate2"))
+                        playerOrder[i] = "rotate2";
                 }
                 else if (IsInsideBox(playerObjects[i].anchoredPosition, playerBox1))
                 {
-                    if (NotSameBox("playerBox1"))
-                        playerOrder[i] = "playerBox1";
+                    if (NotSameBox("player1"))
+                        playerOrder[i] = "player1";
                 }
                 else if (IsInsideBox(playerObjects[i].anchoredPosition, playerBox2))
                 {
-                    if (NotSameBox("playerBox2"))
-                        playerOrder[i] = "playerBox2";
+                    if (NotSameBox("player2"))
+                        playerOrder[i] = "player2";
                 }
                 else
                     playerOrder[i] = "";
             }
 
-            if (playerOrder.All(x => x != ""))
-            {
-                checkPosition = false;
-                GameManager.Instance.StartGame();
-            }
+            if (playerOrder.Any(x => x == ""))
+                return;
+            checkPosition = false;
+            GameManager.Instance.StartGame(playerOrder);
         }
 
         private bool IsInsideBox(Vector2 position, List<Vector2> box)
