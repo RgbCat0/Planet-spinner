@@ -54,7 +54,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: e283589555b851943880304485520f92, type: 2}
     - target: {fileID: 919132149155446097, guid: 4777eefc43ab1ad44aa43cd796d6c042, type: 3}
       propertyPath: m_Name
-      value: astronaut
+      value: PlayerRed
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

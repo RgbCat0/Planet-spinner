@@ -935,7 +935,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 655020883692c2f46aa692fd7cd98315, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 10
+  rotationSpeed: 0
 --- !u!1 &521476712
 GameObject:
   m_ObjectHideFlags: 0
@@ -1880,6 +1880,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerInputs: []
   collectedItems: []
+  collectedItems2: []
 --- !u!114 &1251377235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1897,6 +1898,7 @@ MonoBehaviour:
   - {fileID: 742520557}
   - {fileID: 1937925170}
   - {fileID: 1232308604}
+  checkPosition: 0
   rotateBox1:
   - {x: -170, y: 40}
   - {x: -40, y: 170}
