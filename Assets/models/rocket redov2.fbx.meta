@@ -1,14 +1,9 @@
 fileFormatVersion: 2
-guid: d75b6114f216c0f4587b85b5f04372e4
+guid: d0f2e443f1942824782c44cc087910b5
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: rocket redo
-    second: {fileID: -2262227382107982116, guid: f28313832bf90484fa41d590f3d03f47, type: 3}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
