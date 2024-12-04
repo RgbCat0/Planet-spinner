@@ -620,10 +620,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38adfef1b0329cc47b5f551232f4389b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ScoreText: {fileID: 1430378640}
+  scoreText: {fileID: 1430378640}
   whoWonText: {fileID: 1434388680}
-  scoreTeam1: 0
-  scoreTeam2: 0
 --- !u!4 &1593051216
 Transform:
   m_ObjectHideFlags: 0
@@ -633,7 +631,7 @@ Transform:
   m_GameObject: {fileID: 1593051214}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 954.8912, y: 859.42224, z: -595.3612}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

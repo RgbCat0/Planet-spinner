@@ -6,7 +6,11 @@ namespace Jesper.InGame
 {
     public class PlayerMovement : MonoBehaviour
     {
-        public bool Bound { get; private set; }
+        private static readonly int ToWalk = Animator.StringToHash("ToWalk");
+        private static readonly int ToIdle = Animator.StringToHash("ToIdle");
+
+        // public bool Bound { get; private set; } // unused
+        private Animator _animator;
         private Rigidbody _rb;
         private Vector2 _move;
         private bool _isGroundFriction,
@@ -40,6 +44,7 @@ namespace Jesper.InGame
 
         private void Start()
         {
+            _animator = GetComponent<Animator>();
             _rb = GetComponent<Rigidbody>();
             _rb.sleepThreshold = 0;
         }
@@ -50,6 +55,7 @@ namespace Jesper.InGame
             _isGroundJump = IsGrounded(jumpCheckDistance);
             if (movementEnabled)
                 Move();
+            _animator.SetTrigger(_move != Vector2.zero ? ToWalk : ToIdle);
         }
 
         private void Move()
@@ -73,13 +79,12 @@ namespace Jesper.InGame
         public void BindPlayerInput(PlayerInput playerInput)
         {
             var moveAction = playerInput.actions.FindAction("MoveLeftRight");
-            var jumpAction = playerInput.actions.FindAction("Jump");
             moveAction.performed += ctx => _move = ctx.ReadValue<Vector2>();
             moveAction.canceled += _ => _move = Vector2.zero;
-            jumpAction.performed += _ => Jump();
-            var temp = playerInput.actions["Zoom"];
-            temp.performed += _ => teamCamera.GetComponent<CameraZoom>().ToggleZoom();
-            Bound = true;
+            playerInput.actions["Jump"].performed += _ => Jump();
+            playerInput.actions["Zoom"].performed += _ =>
+                teamCamera.GetComponent<CameraZoom>().ToggleZoom();
+            playerInput.actions["Pause"].performed += _ => GameManager.Instance.PauseGame();
         }
     }
 }
