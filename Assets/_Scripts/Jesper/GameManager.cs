@@ -127,7 +127,11 @@ namespace Jesper
                 Team1Score += 1000 / Mathf.RoundToInt(_timerTeam1);
                 _timerTeam1 = 0;
 
-                UiManager.Instance.ChangeIndexedItem(teamNumber, collectedItems.Count, Color.white);
+                UiManager.Instance.ChangeIndexedItem(
+                    teamNumber,
+                    collectedItems.Count - 1,
+                    Color.white
+                );
                 if (collectedItems.Count < 3)
                     return;
                 Debug.Log("team 1 wins");
