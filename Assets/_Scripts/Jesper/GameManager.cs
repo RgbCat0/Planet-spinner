@@ -28,7 +28,7 @@ namespace Jesper
         #endregion
         #region Player input handler
         public List<PlayerInput> playerInputs = new(); // game can only continue if there are 4 players
-        public const int NeededPlayers = 4;
+        public const int NeededPlayers = 1;
         private TitleUiManager _titleUiManager;
         private TeamSelectHandler _teamSelectHandler;
 
@@ -65,6 +65,15 @@ namespace Jesper
         #endregion
 
         #region In game
+
+        private float _timerTeam1,
+            _timerTeam2;
+        public int Team1Score { private set; get; }
+        public int Team2Score { private set; get; }
+        public bool Team1Won { private set; get; }
+        public List<bool> collectedItems = new();
+        public List<bool> collectedItems2 = new();
+        private bool _gamePaused;
 
         public void GotoTeamSelect()
         {
@@ -110,24 +119,50 @@ namespace Jesper
                 t.movementEnabled = true;
         }
 
-        public List<string> collectedItems = new();
-        public List<string> collectedItems2 = new();
-
-        public void AddItem(string item, int teamNumber)
+        public void AddItem(int teamNumber)
         {
             if (teamNumber == 0)
             {
-                collectedItems.Add(item);
-                if (collectedItems.Count == 3)
-                    Debug.Log("team 1 wins");
+                collectedItems.Add(true);
+                Team1Score += 1000 / Mathf.RoundToInt(_timerTeam1);
+                _timerTeam1 = 0;
+
+                UiManager.Instance.ChangeIndexedItem(teamNumber, collectedItems.Count, Color.white);
+                if (collectedItems.Count < 3)
+                    return;
+                Debug.Log("team 1 wins");
+                Team1Won = true;
             }
             else
             {
-                collectedItems2.Add(item);
-                if (collectedItems2.Count == 3)
-                    Debug.Log("team 2 wins");
+                collectedItems2.Add(true);
+                Team2Score += 1000 / Mathf.RoundToInt(_timerTeam2);
+                _timerTeam2 = 0;
+                if (collectedItems2.Count < 3)
+                    return;
+                Debug.Log("team 2 wins");
+                Team1Won = false;
             }
+
+            SceneManager.LoadScene("EndGame");
         }
+
+        public int ReturnCountAmount(int teamNumber) =>
+            teamNumber == 0 ? collectedItems.Count : collectedItems2.Count;
+
+        private void Update()
+        {
+            _timerTeam1 += Time.deltaTime;
+            _timerTeam2 += Time.deltaTime;
+        }
+
+        public void PauseGame()
+        {
+            _gamePaused = !_gamePaused;
+            Time.timeScale = _gamePaused ? 0 : 1;
+            UiManager.Instance.PauseGame(_gamePaused);
+        }
+
         #endregion
     }
 }

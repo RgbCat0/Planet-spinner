@@ -4,33 +4,29 @@ namespace Jesper.InGame
 {
     public class Player : MonoBehaviour
     {
-        public string item;
+        public bool item;
         private int TeamNumber => gameObject.name.EndsWith("1") ? 0 : 1;
 
         // ReSharper disable once ParameterHidesMember
-        private void AddItem(string item)
-        {
-            this.item = item;
-            UiManager.Instance.SetItemText(item, TeamNumber);
-        }
-
-        private void RemoveItem()
-        {
-            item = string.Empty;
-            UiManager.Instance.SetItemText(string.Empty, TeamNumber);
-        }
+        private void AddItem() { }
 
         public void OnCollisionEnter(Collision other)
         {
-            if (other.gameObject.CompareTag("SupplyItem") && item == string.Empty)
+            if (other.gameObject.CompareTag("SupplyItem") && !item)
             {
-                AddItem(other.gameObject.name);
+                item = true;
+                UiManager.Instance.ChangeIndexedItem(
+                    TeamNumber,
+                    GameManager.Instance.ReturnCountAmount(TeamNumber),
+                    Color.gray
+                );
                 Destroy(other.gameObject);
             }
-            else if (other.gameObject.CompareTag("Finish") && item != string.Empty)
+            else if (other.gameObject.CompareTag("Finish") && item)
             {
-                GameManager.Instance.AddItem(item, TeamNumber);
-                RemoveItem();
+                AddItem();
+                GameManager.Instance.AddItem(TeamNumber);
+                item = false;
             }
         }
     }

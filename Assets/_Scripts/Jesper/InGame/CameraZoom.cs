@@ -24,17 +24,8 @@ namespace Jesper.InGame
 
         public void ToggleZoom()
         {
-            Debug.Log("Toggle zoom");
-            if (_isZoomedIn)
-            {
-                _isZoomedIn = false;
-                StartCoroutine(ZoomOut());
-            }
-            else
-            {
-                _isZoomedIn = true;
-                StartCoroutine(KeepCameraOnTarget());
-            }
+            _isZoomedIn = !_isZoomedIn;
+            StartCoroutine(_isZoomedIn ? ZoomIn() : ZoomOut());
         }
 
         private IEnumerator ZoomOut()
@@ -50,7 +41,7 @@ namespace Jesper.InGame
             }
         }
 
-        private IEnumerator KeepCameraOnTarget()
+        private IEnumerator ZoomIn()
         {
             while (_isZoomedIn)
             {

@@ -1,5 +1,8 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 namespace Jesper.InGame
 {
@@ -19,9 +22,13 @@ namespace Jesper.InGame
             Destroy(gameObject);
         }
         #endregion
+        [FormerlySerializedAs("Team1Images")]
         [SerializeField]
-        private TextMeshProUGUI item,
-            item2;
+        private List<RawImage> team1Images;
+
+        [FormerlySerializedAs("Team2Images")]
+        [SerializeField]
+        private List<RawImage> team2Images;
 
         [SerializeField]
         private TextMeshProUGUI countdown,
@@ -30,12 +37,12 @@ namespace Jesper.InGame
         [SerializeField]
         private GameObject countDownParent;
 
-        public void SetItemText(string text, int team)
+        public void ChangeIndexedItem(int teamNumber, int index, Color color)
         {
-            if (team == 0)
-                item.text = $"Supply item: {text}";
+            if (teamNumber == 0)
+                team1Images[index].color = color;
             else
-                item2.text = $"Supply item: {text}";
+                team2Images[index].color = color;
         }
 
         public void UpdateCountDown(string text)
@@ -47,6 +54,10 @@ namespace Jesper.InGame
         public void GameStart()
         {
             countDownParent.SetActive(false);
+            countdown.text = "PAUSED";
+            countdown2.text = "PAUSED"; // already setups the text
         }
+
+        public void PauseGame(bool pause) => countDownParent.SetActive(pause);
     }
 }

@@ -1,13 +1,17 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Jesper.TitleScreen
 {
+    /// <summary>
+    /// Handles the team selection of the players. Players can select between two teams and two rotations.
+    /// </summary>
     public class TeamSelectHandler : MonoBehaviour
     {
-        public List<RectTransform> playerObjects; // used for team selection movement
+        [FormerlySerializedAs("playerObjects")]
+        public List<RectTransform> players; // used for team selection movement
         public bool checkPosition;
 
         [SerializeField]
@@ -29,7 +33,7 @@ namespace Jesper.TitleScreen
         {
             for (var i = 0; i < GameManager.Instance.playerInputs.Count; i++)
             {
-                playerObjects[i]
+                players[i]
                     .GetComponent<TitlePlayerMovement>()
                     .Bind(GameManager.Instance.playerInputs[i]);
             }
@@ -39,24 +43,24 @@ namespace Jesper.TitleScreen
         {
             if (!checkPosition)
                 return;
-            for (var i = 0; i < playerObjects.Count; i++)
+            for (var i = 0; i < players.Count; i++)
             {
-                if (IsInsideBox(playerObjects[i].anchoredPosition, rotateBox1))
+                if (IsInsideBox(players[i].anchoredPosition, rotateBox1))
                 {
                     if (NotSameBox("rotate1"))
                         playerOrder[i] = "rotate1";
                 }
-                else if (IsInsideBox(playerObjects[i].anchoredPosition, rotateBox2))
+                else if (IsInsideBox(players[i].anchoredPosition, rotateBox2))
                 {
                     if (NotSameBox("rotate2"))
                         playerOrder[i] = "rotate2";
                 }
-                else if (IsInsideBox(playerObjects[i].anchoredPosition, playerBox1))
+                else if (IsInsideBox(players[i].anchoredPosition, playerBox1))
                 {
                     if (NotSameBox("player1"))
                         playerOrder[i] = "player1";
                 }
-                else if (IsInsideBox(playerObjects[i].anchoredPosition, playerBox2))
+                else if (IsInsideBox(players[i].anchoredPosition, playerBox2))
                 {
                     if (NotSameBox("player2"))
                         playerOrder[i] = "player2";
@@ -64,11 +68,12 @@ namespace Jesper.TitleScreen
                 else
                     playerOrder[i] = "";
             }
-            // checks if all (gamemanager.neededplayers) players have selected a team (players can be less then 4 for testing)
+            // checks if all players have selected a team (players can be less than 4 for testing)
             if (playerOrder.Count(x => x != "") < GameManager.NeededPlayers)
                 return;
             checkPosition = false;
             GameManager.Instance.StartGame(playerOrder);
+            enabled = false;
         }
 
         private bool IsInsideBox(Vector2 position, List<Vector2> box)
