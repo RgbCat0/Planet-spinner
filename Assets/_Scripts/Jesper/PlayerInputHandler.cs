@@ -8,10 +8,6 @@ namespace Jesper
     {
         private PlayerInput _playerInput;
 
-        // debug info
-        [SerializeField]
-        private string controllerType;
-
         private void Start()
         {
             _playerInput = GetComponent<PlayerInput>();
@@ -21,8 +17,6 @@ namespace Jesper
                 _playerInput.devices[0]
             );
             DontDestroyOnLoad(gameObject); // this gameObject is the main entry for every scene
-            controllerType = _playerInput.devices[0].name;
-            Debug.Log("PlayerInput successfully started");
 
             GameManager.Instance.AddPlayerInput(_playerInput); // register player input
         }

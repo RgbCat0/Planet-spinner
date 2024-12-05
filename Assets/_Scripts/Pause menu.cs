@@ -5,8 +5,9 @@ using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Pausemenu : MonoBehaviour
+public class PauseMenu : MonoBehaviour
 {
+    /* unused script
     // added here for testing
     [SerializeField]private InputAction _pauseAction;
 
@@ -42,4 +43,5 @@ public class Pausemenu : MonoBehaviour
             pause = false;
         }
     }
+    */
 }

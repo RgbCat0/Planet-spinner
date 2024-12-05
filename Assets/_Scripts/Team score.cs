@@ -1,6 +1,7 @@
 using Jesper;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TeamScore : MonoBehaviour
 {
@@ -26,5 +27,10 @@ public class TeamScore : MonoBehaviour
     {
         scoreText.text = _saveScore;
         whoWonText.text = _team1Won ? "Red Won" : "Blue Won";
+    }
+
+    public void ReturnToStart()
+    {
+        SceneManager.LoadScene("TitleScreen");
     }
 }

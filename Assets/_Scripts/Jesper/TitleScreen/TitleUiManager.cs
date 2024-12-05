@@ -58,6 +58,8 @@ namespace Jesper.TitleScreen
 
         public void OnPlayButtonClicked() => GameManager.Instance.GotoTeamSelect();
 
+        public void OnCreditsButtonClicked() => mainText.text = CreditsScreenName;
+
         public void OnExitButtonClicked() => StartCoroutine(ExitGame());
 
         private IEnumerator ExitGame()
@@ -66,13 +68,11 @@ namespace Jesper.TitleScreen
             StartCoroutine(MoveMainTextToCenter());
             yield return new WaitForSeconds(animationDuration);
             Application.Quit();
-#if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false; // testing purposes
-#endif
             yield return null;
         }
 
-        public void SetPlayerText(int playerCount) => playerText.text = $"Players: {playerCount}";
+        public void SetPlayerAmount(int playerCount) =>
+            GameObject.Find("PlayerAmount").GetComponent<PlayerCount>().UpdateCount(playerCount);
 
         public void EnablePlayButton() => playButton.interactable = true;
 

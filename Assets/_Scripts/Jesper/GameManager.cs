@@ -31,6 +31,7 @@ namespace Jesper
         public const int NeededPlayers = 1;
         private TitleUiManager _titleUiManager;
         private TeamSelectHandler _teamSelectHandler;
+        private PlayerInputManager _playerInputManager;
 
         private void Start()
         {
@@ -38,12 +39,13 @@ namespace Jesper
                 .GetComponent<TitleUiManager>();
             _teamSelectHandler = FindFirstObjectByType<TeamSelectHandler>()
                 .GetComponent<TeamSelectHandler>();
+            _playerInputManager = GetComponent<PlayerInputManager>();
         }
 
         public void AddPlayerInput(PlayerInput playerInput)
         {
             playerInputs.Add(playerInput);
-            _titleUiManager.SetPlayerText(playerInputs.Count);
+            _titleUiManager.SetPlayerAmount(playerInputs.Count);
             if (playerInputs.Count == 2)
             {
                 playerInputs[1]
@@ -74,6 +76,7 @@ namespace Jesper
         public List<bool> collectedItems = new();
         public List<bool> collectedItems2 = new();
         private bool _gamePaused;
+        public List<GameObject> maps;
 
         public void GotoTeamSelect()
         {
@@ -85,8 +88,9 @@ namespace Jesper
 
         public async void StartGame(List<string> playerOrder)
         {
-            await SceneManager.LoadSceneAsync("Main");
             _teamSelectHandler.checkPosition = false;
+            await SceneManager.LoadSceneAsync("Main");
+            Instantiate(maps[0]);
             DistributePlayers(playerOrder);
         }
 

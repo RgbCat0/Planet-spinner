@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
+using static UnityEngine.InputSystem.InputAction;
 
 namespace Jesper.InGame
 {
@@ -16,6 +17,7 @@ namespace Jesper.InGame
         private bool _isGroundFriction,
             _isGroundJump;
         public bool movementEnabled;
+        private PlayerInput _playerInput;
 
         [SerializeField]
         private float speed;
@@ -40,6 +42,9 @@ namespace Jesper.InGame
         private float friction;
 
         [SerializeField]
+        private float notMoveFriction;
+
+        [SerializeField]
         private GameObject teamCamera;
 
         private void Start()
@@ -60,11 +65,20 @@ namespace Jesper.InGame
 
         private void Move()
         {
+            transform.rotation = _move.x switch
+            {
+                < 0 => Quaternion.Euler(0, 90, 0),
+                > 0 => Quaternion.Euler(0, -90, 0),
+                _ => Quaternion.identity
+            };
             _rb.AddForce(_move * (speed * Time.deltaTime), ForceMode.VelocityChange);
             if (_rb.linearVelocity.magnitude > maxSpeed)
                 _rb.linearVelocity = _rb.linearVelocity.normalized * maxSpeed; // cap speed
             if (_rb.linearVelocity.magnitude > 0 && _isGroundFriction)
-                _rb.AddForce(-_rb.linearVelocity.normalized * friction); // apply ground friction
+                _rb.AddForce(
+                    -_rb.linearVelocity.normalized
+                        * (_move == Vector2.zero ? notMoveFriction : friction)
+                ); // apply ground friction
         }
 
         private void Jump()
@@ -78,13 +92,34 @@ namespace Jesper.InGame
 
         public void BindPlayerInput(PlayerInput playerInput)
         {
-            var moveAction = playerInput.actions.FindAction("MoveLeftRight");
-            moveAction.performed += ctx => _move = ctx.ReadValue<Vector2>();
-            moveAction.canceled += _ => _move = Vector2.zero;
-            playerInput.actions["Jump"].performed += _ => Jump();
-            playerInput.actions["Zoom"].performed += _ =>
-                teamCamera.GetComponent<CameraZoom>().ToggleZoom();
-            playerInput.actions["Pause"].performed += _ => GameManager.Instance.PauseGame();
+            _playerInput = playerInput;
+            var moveAction = _playerInput.actions.FindAction("MoveLeftRight");
+            moveAction.performed += OnMove;
+            moveAction.canceled += OnNotMove;
+            _playerInput.actions["Jump"].performed += OnJump;
+            _playerInput.actions["Zoom"].performed += OnZoom;
+            _playerInput.actions["Pause"].performed += OnPause;
         }
+
+        private void OnDisable()
+        { // errors and I don't know why, but I have no time to fix it
+            var moveAction = _playerInput.actions.FindAction("MoveLeftRight");
+            moveAction.performed -= OnMove;
+            moveAction.canceled -= OnNotMove;
+            _playerInput.actions["Jump"].performed -= OnJump;
+            _playerInput.actions["Zoom"].performed -= OnZoom;
+            _playerInput.actions["Pause"].performed -= OnPause;
+        }
+
+        private void OnMove(CallbackContext ctx) => _move = ctx.ReadValue<Vector2>();
+
+        private void OnNotMove(CallbackContext ctx) => _move = Vector2.zero;
+
+        private void OnJump(CallbackContext ctx) => Jump();
+
+        private void OnZoom(CallbackContext ctx) =>
+            teamCamera.GetComponent<CameraZoom>().ToggleZoom();
+
+        private static void OnPause(CallbackContext ctx) => GameManager.Instance.PauseGame();
     }
 }
