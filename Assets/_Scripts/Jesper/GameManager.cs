@@ -77,6 +77,7 @@ namespace Jesper
         public List<bool> collectedItems2 = new();
         private bool _gamePaused;
         public List<GameObject> maps;
+        int random;
 
         public void GotoTeamSelect()
         {
@@ -84,13 +85,14 @@ namespace Jesper
 
             _teamSelectHandler.Bind();
             _teamSelectHandler.checkPosition = true;
+            random = Random.Range(0, 3);
         }
 
         public async void StartGame(List<string> playerOrder)
         {
             _teamSelectHandler.checkPosition = false;
             await SceneManager.LoadSceneAsync("Main");
-            Instantiate(maps[0]);
+            Instantiate(maps[random]);
             DistributePlayers(playerOrder);
         }
 
