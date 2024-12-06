@@ -30,8 +30,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3077657425484429072}
-  - {fileID: 5860053651719875124}
   - {fileID: 519779919003534712}
+  - {fileID: 5860053651719875124}
   m_Father: {fileID: 5561275602330980344}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2163800749412105394
@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2471d88e66f848918bf51ea572bbfd48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  target: {fileID: 1269665522028576686}
   zoomInDistance: {x: 0, y: 0, z: -10}
   zoomOutPosition: {x: 0, y: 0, z: -30}
   zoomSpeed: 6
@@ -1142,7 +1142,7 @@ PrefabInstance:
       objectReference: {fileID: 4091216446659241544}
     - target: {fileID: 6334394127957311293, guid: 604a9a55945e5004f8dc3faa10bfc43b, type: 3}
       propertyPath: m_Name
-      value: LEVEL V2 (1)
+      value: rotate2
       objectReference: {fileID: 0}
     - target: {fileID: 6675347613157909895, guid: 604a9a55945e5004f8dc3faa10bfc43b, type: 3}
       propertyPath: m_LocalPosition.x

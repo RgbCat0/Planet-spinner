@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -74,6 +75,11 @@ namespace Jesper.TitleScreen
             checkPosition = false;
             GameManager.Instance.StartGame(playerOrder);
             enabled = false;
+        }
+
+        private IEnumerator timer()
+        {
+            yield return new WaitForSeconds(3);
         }
 
         private bool IsInsideBox(Vector2 position, List<Vector2> box)

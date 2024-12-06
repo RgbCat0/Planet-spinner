@@ -28,7 +28,8 @@ namespace Jesper
         #endregion
         #region Player input handler
         public List<PlayerInput> playerInputs = new(); // game can only continue if there are 4 players
-        public const int NeededPlayers = 1;
+
+        public const int NeededPlayers = 4;
         private TitleUiManager _titleUiManager;
         private TeamSelectHandler _teamSelectHandler;
         private PlayerInputManager _playerInputManager;
@@ -85,14 +86,13 @@ namespace Jesper
 
             _teamSelectHandler.Bind();
             _teamSelectHandler.checkPosition = true;
-            random = Random.Range(0, 3);
         }
 
         public async void StartGame(List<string> playerOrder)
         {
             _teamSelectHandler.checkPosition = false;
             await SceneManager.LoadSceneAsync("Main");
-            Instantiate(maps[random]);
+            Instantiate(maps[_titleUiManager.counter]);
             DistributePlayers(playerOrder);
         }
 
@@ -130,7 +130,7 @@ namespace Jesper
             if (teamNumber == 0)
             {
                 collectedItems.Add(true);
-                Team1Score += 1000 / Mathf.RoundToInt(_timerTeam1);
+                Team1Score += 4000 / Mathf.RoundToInt(_timerTeam1);
                 _timerTeam1 = 0;
 
                 UiManager.Instance.ChangeIndexedItem(
@@ -148,6 +148,11 @@ namespace Jesper
                 collectedItems2.Add(true);
                 Team2Score += 1000 / Mathf.RoundToInt(_timerTeam2);
                 _timerTeam2 = 0;
+                UiManager.Instance.ChangeIndexedItem(
+                    teamNumber,
+                    collectedItems2.Count - 1,
+                    Color.white
+                );
                 if (collectedItems2.Count < 3)
                     return;
                 Debug.Log("team 2 wins");

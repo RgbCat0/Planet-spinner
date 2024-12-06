@@ -239,7 +239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2471d88e66f848918bf51ea572bbfd48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  target: {fileID: 3403656698728291826}
   zoomInDistance: {x: 0, y: 0, z: -10}
   zoomOutPosition: {x: 0, y: 0, z: -30}
   zoomSpeed: 6
@@ -1146,7 +1146,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 60701421992140134, guid: c0d1092f41a53f448bc6889353aaf9b0, type: 3}
       propertyPath: m_Name
-      value: LEVEL 1
+      value: rotate2
       objectReference: {fileID: 0}
     - target: {fileID: 836674694890620892, guid: c0d1092f41a53f448bc6889353aaf9b0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1187,6 +1187,10 @@ PrefabInstance:
     - target: {fileID: 836674694890620892, guid: c0d1092f41a53f448bc6889353aaf9b0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 880520367146456621, guid: c0d1092f41a53f448bc6889353aaf9b0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 55.21
       objectReference: {fileID: 0}
     - target: {fileID: 3580018836636516574, guid: c0d1092f41a53f448bc6889353aaf9b0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1328,7 +1332,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 60701421992140134, guid: c0d1092f41a53f448bc6889353aaf9b0, type: 3}
       propertyPath: m_Name
-      value: LEVEL 1
+      value: rotate1
       objectReference: {fileID: 0}
     - target: {fileID: 836674694890620892, guid: c0d1092f41a53f448bc6889353aaf9b0, type: 3}
       propertyPath: m_LocalPosition.x

@@ -5,10 +5,17 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    [SerializeField] GameObject doorPart1;
-    [SerializeField] GameObject doorPart2;
-    [SerializeField] Transform buttonBase;
-    [SerializeField] bool xAs;
+    [SerializeField]
+    GameObject doorPart1;
+
+    [SerializeField]
+    GameObject doorPart2;
+
+    [SerializeField]
+    Transform buttonBase;
+
+    [SerializeField]
+    bool xAs;
 
     bool pressed = false;
     int count = 0;
@@ -34,17 +41,28 @@ public class Door : MonoBehaviour
     {
         if (xAs)
         {
-            gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position,buttonBase.position * 2, moveSpeed * Time.deltaTime);
+            gameObject.transform.position = Vector3.MoveTowards(
+                gameObject.transform.position,
+                buttonBase.position * 2,
+                moveSpeed * Time.deltaTime
+            );
             doorPart1.transform.position -= new Vector3(0.3f, 0, 0);
             doorPart2.transform.position += new Vector3(0.3f, 0, 0);
         }
         else
         {
-            gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, buttonBase.position * 2, moveSpeed * Time.deltaTime);
+            gameObject.transform.position = Vector3.MoveTowards(
+                gameObject.transform.position,
+                buttonBase.position * 2,
+                moveSpeed * Time.deltaTime
+            );
             doorPart1.transform.position += new Vector3(0, 0.3f, 0);
             doorPart2.transform.position -= new Vector3(0, 0.3f, 0);
         }
         count++;
-
+        // BYUG FIX
+        doorPart1.GetComponent<Collider>().enabled = false;
+        doorPart2.GetComponent<Collider>().enabled = false;
+        enabled = false;
     }
 }

@@ -29,8 +29,9 @@ namespace Jesper.TitleScreen
         private const string TitleScreenName = "Rotational race";
         private const string SettingsScreenName = "Settings Title"; // no settings rn
         private const string CreditsScreenName =
-            "Developers: Jesper, Thomas\nArtists: Lucas Bl, Lucas Bo, Jiray";
+            "Developers: Jesper, Thomas\nArtists: Lucas Bl, Jiray";
         private const string ExitingScreenName = "Thanks for playing!";
+        public int counter;
 
         private void Start()
         {
@@ -58,7 +59,13 @@ namespace Jesper.TitleScreen
 
         public void OnPlayButtonClicked() => GameManager.Instance.GotoTeamSelect();
 
-        public void OnCreditsButtonClicked() => mainText.text = CreditsScreenName;
+        public void OnCreditsButtonClicked()
+        {
+            counter++;
+            if (counter == 3)
+                counter = 0;
+            subText.text = counter.ToString();
+        }
 
         public void OnExitButtonClicked() => StartCoroutine(ExitGame());
 

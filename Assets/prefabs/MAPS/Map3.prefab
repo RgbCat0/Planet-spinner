@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2471d88e66f848918bf51ea572bbfd48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  target: {fileID: 4429328611486832630}
   zoomInDistance: {x: 0, y: 0, z: -10}
   zoomOutPosition: {x: 0, y: 0, z: -30}
   zoomSpeed: 6
@@ -368,8 +368,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8337016114371145450}
-  - {fileID: 5449626896680245785}
   - {fileID: 2856970084290747478}
+  - {fileID: 5449626896680245785}
   m_Father: {fileID: 6556363849782936484}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &810413780037178267
@@ -422,7 +422,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 803448784382441901, guid: d7ebe2249a3379f43a1809f60567ba8d, type: 3}
       propertyPath: m_Name
-      value: LEVEL V3
+      value: rotate2
       objectReference: {fileID: 0}
     - target: {fileID: 821561311578702642, guid: d7ebe2249a3379f43a1809f60567ba8d, type: 3}
       propertyPath: RespawnPointBlue
@@ -444,6 +444,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -2.8
       objectReference: {fileID: 0}
+    - target: {fileID: 2261579879856745418, guid: d7ebe2249a3379f43a1809f60567ba8d, type: 3}
+      propertyPath: m_Name
+      value: blue door
+      objectReference: {fileID: 0}
     - target: {fileID: 2388369004915559994, guid: d7ebe2249a3379f43a1809f60567ba8d, type: 3}
       propertyPath: RespawnPointBlue
       value: 
@@ -458,7 +462,7 @@ PrefabInstance:
       objectReference: {fileID: 881450619449557236}
     - target: {fileID: 2995167527496188572, guid: d7ebe2249a3379f43a1809f60567ba8d, type: 3}
       propertyPath: xAs
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2995167527496188572, guid: d7ebe2249a3379f43a1809f60567ba8d, type: 3}
       propertyPath: doorPart1
@@ -467,7 +471,7 @@ PrefabInstance:
     - target: {fileID: 2995167527496188572, guid: d7ebe2249a3379f43a1809f60567ba8d, type: 3}
       propertyPath: doorPart2
       value: 
-      objectReference: {fileID: 4152444780649600211}
+      objectReference: {fileID: 5315228587728163064}
     - target: {fileID: 2995167527496188572, guid: d7ebe2249a3379f43a1809f60567ba8d, type: 3}
       propertyPath: buttonBase
       value: 
@@ -484,10 +488,22 @@ PrefabInstance:
       propertyPath: RespawnPointBlue
       value: 
       objectReference: {fileID: 881450619449557236}
+    - target: {fileID: 4015659817478315350, guid: d7ebe2249a3379f43a1809f60567ba8d, type: 3}
+      propertyPath: m_Name
+      value: red door
+      objectReference: {fileID: 0}
+    - target: {fileID: 4024556827243408628, guid: d7ebe2249a3379f43a1809f60567ba8d, type: 3}
+      propertyPath: m_Name
+      value: blue button
+      objectReference: {fileID: 0}
     - target: {fileID: 4208812836077835097, guid: d7ebe2249a3379f43a1809f60567ba8d, type: 3}
       propertyPath: RespawnPointBlue
       value: 
       objectReference: {fileID: 881450619449557236}
+    - target: {fileID: 4670829972239326538, guid: d7ebe2249a3379f43a1809f60567ba8d, type: 3}
+      propertyPath: m_Name
+      value: red button
+      objectReference: {fileID: 0}
     - target: {fileID: 5035624279677138317, guid: d7ebe2249a3379f43a1809f60567ba8d, type: 3}
       propertyPath: RespawnPointBlue
       value: 
@@ -555,11 +571,11 @@ PrefabInstance:
     - target: {fileID: 6816478407473754914, guid: d7ebe2249a3379f43a1809f60567ba8d, type: 3}
       propertyPath: doorPart2
       value: 
-      objectReference: {fileID: 5315228587728163064}
+      objectReference: {fileID: 6997397027660965476}
     - target: {fileID: 6816478407473754914, guid: d7ebe2249a3379f43a1809f60567ba8d, type: 3}
       propertyPath: buttonBase
       value: 
-      objectReference: {fileID: 1195122437822690319}
+      objectReference: {fileID: 7466382718647977393}
     - target: {fileID: 6843254908161810157, guid: d7ebe2249a3379f43a1809f60567ba8d, type: 3}
       propertyPath: m_Name
       value: Supply parts
@@ -705,11 +721,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3354157644000129125, guid: d7ebe2249a3379f43a1809f60567ba8d, type: 3}
   m_PrefabInstance: {fileID: 810413780037178267}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &4152444780649600211 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3647732685523765064, guid: d7ebe2249a3379f43a1809f60567ba8d, type: 3}
-  m_PrefabInstance: {fileID: 810413780037178267}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5315228587728163064 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4826828795304166243, guid: d7ebe2249a3379f43a1809f60567ba8d, type: 3}
@@ -718,6 +729,16 @@ GameObject:
 --- !u!4 &6452578498278596258 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5959110025963801913, guid: d7ebe2249a3379f43a1809f60567ba8d, type: 3}
+  m_PrefabInstance: {fileID: 810413780037178267}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6997397027660965476 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7648401412609127935, guid: d7ebe2249a3379f43a1809f60567ba8d, type: 3}
+  m_PrefabInstance: {fileID: 810413780037178267}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7466382718647977393 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7828030810624251434, guid: d7ebe2249a3379f43a1809f60567ba8d, type: 3}
   m_PrefabInstance: {fileID: 810413780037178267}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &8245360689911018682 stripped
@@ -820,7 +841,7 @@ PrefabInstance:
     - target: {fileID: 2995167527496188572, guid: d7ebe2249a3379f43a1809f60567ba8d, type: 3}
       propertyPath: doorPart2
       value: 
-      objectReference: {fileID: 1537726864679598089}
+      objectReference: {fileID: 7292476604118203426}
     - target: {fileID: 2995167527496188572, guid: d7ebe2249a3379f43a1809f60567ba8d, type: 3}
       propertyPath: buttonBase
       value: 
@@ -1003,11 +1024,6 @@ PrefabInstance:
 --- !u!1 &667693251687173924 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3354157644000129125, guid: d7ebe2249a3379f43a1809f60567ba8d, type: 3}
-  m_PrefabInstance: {fileID: 2866615803564048193}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1537726864679598089 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3647732685523765064, guid: d7ebe2249a3379f43a1809f60567ba8d, type: 3}
   m_PrefabInstance: {fileID: 2866615803564048193}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2422053422853241272 stripped
