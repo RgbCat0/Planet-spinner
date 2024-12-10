@@ -64,7 +64,7 @@ namespace Jesper.TitleScreen
             counter++;
             if (counter == 3)
                 counter = 0;
-            subText.text = counter.ToString();
+            subText.text = $"Map: {counter + 1}";
         }
 
         public void OnExitButtonClicked() => StartCoroutine(ExitGame());

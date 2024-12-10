@@ -48,22 +48,22 @@ namespace Jesper.TitleScreen
             {
                 if (IsInsideBox(players[i].anchoredPosition, rotateBox1))
                 {
-                    if (NotSameBox("rotate1"))
+                    if (TwoPlayersNotSameBox("rotate1"))
                         playerOrder[i] = "rotate1";
                 }
                 else if (IsInsideBox(players[i].anchoredPosition, rotateBox2))
                 {
-                    if (NotSameBox("rotate2"))
+                    if (TwoPlayersNotSameBox("rotate2"))
                         playerOrder[i] = "rotate2";
                 }
                 else if (IsInsideBox(players[i].anchoredPosition, playerBox1))
                 {
-                    if (NotSameBox("player1"))
+                    if (TwoPlayersNotSameBox("player1"))
                         playerOrder[i] = "player1";
                 }
                 else if (IsInsideBox(players[i].anchoredPosition, playerBox2))
                 {
-                    if (NotSameBox("player2"))
+                    if (TwoPlayersNotSameBox("player2"))
                         playerOrder[i] = "player2";
                 }
                 else
@@ -96,7 +96,7 @@ namespace Jesper.TitleScreen
                 && position.y <= topRight.y;
         }
 
-        private bool NotSameBox(string boxName)
+        private bool TwoPlayersNotSameBox(string boxName)
         {
             return playerOrder.All(x => x != boxName);
         }
