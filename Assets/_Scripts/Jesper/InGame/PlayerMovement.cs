@@ -65,12 +65,13 @@ namespace Jesper.InGame
 
         private void Move()
         {
-            transform.rotation = _move.x switch
-            {
-                < 0 => Quaternion.Euler(0, 90, 0),
-                > 0 => Quaternion.Euler(0, -90, 0),
-                _ => Quaternion.identity
-            };
+            if (_move.x < 0)
+                transform.rotation = Quaternion.Euler(0, 90, 0);
+            else if (_move.x > 0)
+                transform.rotation = Quaternion.Euler(0, -90, 0);
+            else
+                transform.rotation = Quaternion.identity;
+
             _rb.AddForce(_move * (speed * Time.deltaTime), ForceMode.VelocityChange);
             if (_rb.linearVelocity.magnitude > maxSpeed)
                 _rb.linearVelocity = _rb.linearVelocity.normalized * maxSpeed; // cap speed

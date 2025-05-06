@@ -25,7 +25,7 @@ public class TeamScore : MonoBehaviour
 
     private void Update()
     {
-        scoreText.text =  _saveScore;
+        scoreText.text = _saveScore;
         whoWonText.text = _team1Won ? "Red Won" : "Blue Won";
     }
 
